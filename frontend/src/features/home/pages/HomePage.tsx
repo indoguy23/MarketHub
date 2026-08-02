@@ -11,6 +11,7 @@ import ThemeToggle from "@/components/common/ThemeToggle";
 import Button from "@/components/ui/Button";
 import FormField from "@/components/ui/form/FormField";
 import Input from "@/components/ui/form/Input";
+import Textarea from "@/components/ui/form/Textarea/Textarea";
 
 const HomePage = () => {
   return (
@@ -65,81 +66,86 @@ const HomePage = () => {
         </section>
 
         {/* FormField */}
-        <section className="rounded-3xl border border-border bg-card p-8 shadow-sm">
+        <section className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8">
           <h2 className="text-2xl font-semibold text-card-foreground">
-            FormField Component
+            Textarea Component
           </h2>
 
           <p className="mt-2 text-muted-foreground">
-            Temporary preview using native inputs. These will be replaced with
-            our reusable Input component in the next step.
+            Reusable multiline fields for descriptions, notes and messages.
           </p>
 
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
             <FormField
-              label="Full Name"
+              label="Product Description"
               required
-              helperText="Enter your legal name."
-              htmlFor="fullName"
+              helperText="Explain the main features and benefits of the product."
+              htmlFor="productDescription"
             >
-              <Input
-                id="fullName"
-                placeholder="John Doe"
-                leftIcon={<User className="h-4 w-4" />}
+              <Textarea
+                id="productDescription"
+                placeholder="Enter a detailed product description..."
               />
             </FormField>
 
             <FormField
-              label="Email Address"
-              required
-              helperText="We'll never share your email."
-              htmlFor="email"
+              label="Store Description"
+              helperText="Tell customers about your business."
+              htmlFor="storeDescription"
             >
-              <Input
-                id="email"
-                type="email"
-                placeholder="john@example.com"
-                leftIcon={<Mail className="h-4 w-4" />}
+              <Textarea
+                id="storeDescription"
+                size="lg"
+                placeholder="Write something about your store..."
               />
             </FormField>
 
             <FormField
-              label="Search Products"
-              helperText="Search by product name or category."
-              htmlFor="productSearch"
+              label="Order Notes"
+              helperText="Optional delivery or packaging instructions."
+              htmlFor="orderNotes"
             >
-              <Input
-                id="productSearch"
-                type="search"
-                placeholder="Search products..."
-                leftIcon={<Search className="h-4 w-4" />}
+              <Textarea
+                id="orderNotes"
+                size="sm"
+                placeholder="Add order instructions..."
               />
             </FormField>
 
             <FormField
-              label="Username"
-              error="This username is already in use."
-              htmlFor="username"
+              label="Customer Review"
+              error="The review must contain at least 20 characters."
+              htmlFor="customerReview"
             >
-              <Input
-                id="username"
-                placeholder="aryan_dev"
+              <Textarea
+                id="customerReview"
                 invalid
-                aria-describedby="username-error"
+                placeholder="Share your experience..."
               />
             </FormField>
 
-            <FormField label="Disabled Field" htmlFor="disabledField">
-              <Input
-                id="disabledField"
-                value="This field is disabled"
+            <FormField
+              label="Fixed Size Message"
+              helperText="This field cannot be resized."
+              htmlFor="fixedMessage"
+            >
+              <Textarea
+                id="fixedMessage"
+                resize="none"
+                placeholder="Write your message..."
+              />
+            </FormField>
+
+            <FormField
+              label="Disabled Description"
+              htmlFor="disabledDescription"
+            >
+              <Textarea
+                id="disabledDescription"
+                value="This description cannot currently be edited."
                 disabled
                 readOnly
               />
-            </FormField>
-
-            <FormField label="Large Input" htmlFor="largeInput">
-              <Input id="largeInput" size="lg" placeholder="Large input size" />
             </FormField>
           </div>
         </section>
