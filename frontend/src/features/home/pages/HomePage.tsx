@@ -1,8 +1,16 @@
-import { ArrowRight, ShoppingBag, Trash2 } from "lucide-react";
+import {
+  ArrowRight,
+  Mail,
+  Search,
+  ShoppingBag,
+  Trash2,
+  User,
+} from "lucide-react";
 
 import ThemeToggle from "@/components/common/ThemeToggle";
 import Button from "@/components/ui/Button";
 import FormField from "@/components/ui/form/FormField";
+import Input from "@/components/ui/form/Input";
 
 const HomePage = () => {
   return (
@@ -74,11 +82,10 @@ const HomePage = () => {
               helperText="Enter your legal name."
               htmlFor="fullName"
             >
-              <input
+              <Input
                 id="fullName"
-                type="text"
                 placeholder="John Doe"
-                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-colors focus:border-primary"
+                leftIcon={<User className="h-4 w-4" />}
               />
             </FormField>
 
@@ -88,38 +95,51 @@ const HomePage = () => {
               helperText="We'll never share your email."
               htmlFor="email"
             >
-              <input
+              <Input
                 id="email"
                 type="email"
                 placeholder="john@example.com"
-                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-colors focus:border-primary"
+                leftIcon={<Mail className="h-4 w-4" />}
               />
             </FormField>
 
             <FormField
-              label="Password"
-              error="Password must contain at least 8 characters."
-              htmlFor="password"
+              label="Search Products"
+              helperText="Search by product name or category."
+              htmlFor="productSearch"
             >
-              <input
-                id="password"
-                type="password"
-                placeholder="••••••••"
-                className="w-full rounded-xl border border-danger bg-background px-4 py-3 text-foreground outline-none"
+              <Input
+                id="productSearch"
+                type="search"
+                placeholder="Search products..."
+                leftIcon={<Search className="h-4 w-4" />}
               />
             </FormField>
 
             <FormField
               label="Username"
-              helperText="This name will be visible publicly."
+              error="This username is already in use."
               htmlFor="username"
             >
-              <input
+              <Input
                 id="username"
-                type="text"
                 placeholder="aryan_dev"
-                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-colors focus:border-primary"
+                invalid
+                aria-describedby="username-error"
               />
+            </FormField>
+
+            <FormField label="Disabled Field" htmlFor="disabledField">
+              <Input
+                id="disabledField"
+                value="This field is disabled"
+                disabled
+                readOnly
+              />
+            </FormField>
+
+            <FormField label="Large Input" htmlFor="largeInput">
+              <Input id="largeInput" size="lg" placeholder="Large input size" />
             </FormField>
           </div>
         </section>
