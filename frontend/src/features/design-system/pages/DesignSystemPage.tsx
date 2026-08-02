@@ -3,6 +3,7 @@ import {
   DesignSystemHeader,
   FormPlayground,
   InputPlayground,
+  SelectPlayground,
   TextareaPlayground,
 } from "../components";
 
@@ -14,6 +15,7 @@ const DesignSystemPage = () => {
         <ButtonPlayground />
         <InputPlayground />
         <TextareaPlayground />
+        <SelectPlayground />
         <FormPlayground />
       </div>
     </main>
