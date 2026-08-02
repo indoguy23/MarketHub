@@ -1,5 +1,6 @@
 import {
   ButtonPlayground,
+  CardPlayground,
   CheckboxPlayground,
   DesignSystemHeader,
   FormPlayground,
@@ -16,6 +17,7 @@ const DesignSystemPage = () => {
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 sm:px-6 lg:px-8">
         <DesignSystemHeader />
         <ButtonPlayground />
+        <CardPlayground />
         <InputPlayground />
         <TextareaPlayground />
         <SelectPlayground />
