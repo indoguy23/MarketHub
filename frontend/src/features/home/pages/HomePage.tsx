@@ -9,43 +9,70 @@ import {
 
 import ThemeToggle from "@/components/common/ThemeToggle";
 import Button from "@/components/ui/Button";
+import Form from "@/components/ui/form/Form";
 import FormField from "@/components/ui/form/FormField";
 import Input from "@/components/ui/form/Input";
-import Textarea from "@/components/ui/form/Textarea/Textarea";
+import Textarea from "@/components/ui/form/Textarea";
 
 const HomePage = () => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+
+    const values = Object.fromEntries(formData.entries());
+
+    console.log("Form submitted:", values);
+  };
+
   return (
-    <main className="min-h-screen bg-background py-10">
-      <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-background py-8 text-foreground sm:py-10">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex items-center justify-between">
+
+        <header className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="text-4xl font-bold text-foreground">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+              Internal UI Playground
+            </p>
+
+            <h1 className="mt-2 text-3xl font-bold text-foreground sm:text-4xl">
               MarketHub Design System
             </h1>
 
-            <p className="mt-2 text-muted-foreground">
-              Playground for all reusable UI components.
+            <p className="mt-2 max-w-2xl text-muted-foreground">
+              A development playground for testing reusable, responsive and
+              theme-aware UI components.
             </p>
           </div>
 
-          <ThemeToggle />
-        </div>
+          <div className="self-start sm:self-auto">
+            <ThemeToggle />
+          </div>
+        </header>
 
-        {/* Buttons */}
-        <section className="rounded-3xl border border-border bg-card p-8 shadow-sm">
-          <h2 className="text-2xl font-semibold text-card-foreground">
-            Button Component
-          </h2>
+        {/* Button Component */}
 
-          <p className="mt-2 text-muted-foreground">
-            All available button variants and sizes.
-          </p>
+        <section className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8">
+          <div>
+            <h2 className="text-2xl font-semibold text-card-foreground">
+              Button Component
+            </h2>
+
+            <p className="mt-2 text-muted-foreground">
+              Available button variants, states, sizes and icon support.
+            </p>
+          </div>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <Button leftIcon={<ShoppingBag size={18} />}>Shop Now</Button>
+            <Button leftIcon={<ShoppingBag className="h-4 w-4" />}>
+              Shop Now
+            </Button>
 
-            <Button variant="secondary" rightIcon={<ArrowRight size={18} />}>
+            <Button
+              variant="secondary"
+              rightIcon={<ArrowRight className="h-4 w-4" />}
+            >
               Become Vendor
             </Button>
 
@@ -53,27 +80,131 @@ const HomePage = () => {
 
             <Button variant="ghost">Cancel</Button>
 
-            <Button variant="destructive" leftIcon={<Trash2 size={18} />}>
+            <Button
+              variant="destructive"
+              leftIcon={<Trash2 className="h-4 w-4" />}
+            >
               Delete Product
             </Button>
 
             <Button loading>Processing</Button>
 
-            <Button size="icon" variant="outline" aria-label="Shopping Bag">
-              <ShoppingBag size={20} />
+            <Button
+              size="icon"
+              variant="outline"
+              aria-label="Open shopping bag"
+              title="Open shopping bag"
+            >
+              <ShoppingBag className="h-5 w-5" />
             </Button>
           </div>
         </section>
 
-        {/* FormField */}
-        <section className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8">
-          <h2 className="text-2xl font-semibold text-card-foreground">
-            Textarea Component
-          </h2>
+        {/* Input Component */}
 
-          <p className="mt-2 text-muted-foreground">
-            Reusable multiline fields for descriptions, notes and messages.
-          </p>
+        <section className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8">
+          <div>
+            <h2 className="text-2xl font-semibold text-card-foreground">
+              Input Component
+            </h2>
+
+            <p className="mt-2 text-muted-foreground">
+              Reusable single-line inputs with icons, helper text, error states
+              and native form attributes.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            <FormField
+              label="Full Name"
+              required
+              helperText="Enter your legal name."
+              htmlFor="fullName"
+            >
+              <Input
+                id="fullName"
+                name="fullName"
+                autoComplete="name"
+                placeholder="John Doe"
+                leftIcon={<User className="h-4 w-4" />}
+              />
+            </FormField>
+
+            <FormField
+              label="Email Address"
+              required
+              helperText="We'll never share your email."
+              htmlFor="emailAddress"
+            >
+              <Input
+                id="emailAddress"
+                name="email"
+                type="email"
+                autoComplete="email"
+                placeholder="john@example.com"
+                leftIcon={<Mail className="h-4 w-4" />}
+              />
+            </FormField>
+
+            <FormField
+              label="Search Products"
+              helperText="Search by product name, vendor or category."
+              htmlFor="productSearch"
+            >
+              <Input
+                id="productSearch"
+                name="search"
+                type="search"
+                placeholder="Search products..."
+                leftIcon={<Search className="h-4 w-4" />}
+              />
+            </FormField>
+
+            <FormField
+              label="Username"
+              error="This username is already in use."
+              htmlFor="username"
+            >
+              <Input
+                id="username"
+                name="username"
+                placeholder="aryan_dev"
+                invalid
+                aria-describedby="username-error"
+              />
+            </FormField>
+
+            <FormField label="Disabled Field" htmlFor="disabledField">
+              <Input
+                id="disabledField"
+                value="This field is disabled"
+                disabled
+                readOnly
+              />
+            </FormField>
+
+            <FormField
+              label="Large Input"
+              helperText="Example of the large input size."
+              htmlFor="largeInput"
+            >
+              <Input id="largeInput" size="lg" placeholder="Large input size" />
+            </FormField>
+          </div>
+        </section>
+
+        {/* Textarea Component */}
+
+        <section className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8">
+          <div>
+            <h2 className="text-2xl font-semibold text-card-foreground">
+              Textarea Component
+            </h2>
+
+            <p className="mt-2 text-muted-foreground">
+              Reusable multiline fields for descriptions, notes and messages.
+            </p>
+          </div>
 
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
             <FormField
@@ -84,6 +215,7 @@ const HomePage = () => {
             >
               <Textarea
                 id="productDescription"
+                name="productDescription"
                 placeholder="Enter a detailed product description..."
               />
             </FormField>
@@ -95,6 +227,7 @@ const HomePage = () => {
             >
               <Textarea
                 id="storeDescription"
+                name="storeDescription"
                 size="lg"
                 placeholder="Write something about your store..."
               />
@@ -107,6 +240,7 @@ const HomePage = () => {
             >
               <Textarea
                 id="orderNotes"
+                name="orderNotes"
                 size="sm"
                 placeholder="Add order instructions..."
               />
@@ -119,6 +253,7 @@ const HomePage = () => {
             >
               <Textarea
                 id="customerReview"
+                name="customerReview"
                 invalid
                 placeholder="Share your experience..."
               />
@@ -131,6 +266,7 @@ const HomePage = () => {
             >
               <Textarea
                 id="fixedMessage"
+                name="fixedMessage"
                 resize="none"
                 placeholder="Write your message..."
               />
@@ -148,6 +284,83 @@ const HomePage = () => {
               />
             </FormField>
           </div>
+        </section>
+
+        {/* Form Component */}
+
+        <section className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8">
+          <div>
+            <h2 className="text-2xl font-semibold text-card-foreground">
+              Form Component
+            </h2>
+
+            <p className="mt-2 text-muted-foreground">
+              A reusable form layout composed with FormField, Input, Textarea
+              and Button.
+            </p>
+          </div>
+
+          <Form spacing="lg" className="mt-8 max-w-2xl" onSubmit={handleSubmit}>
+            <FormField
+              label="Full Name"
+              required
+              helperText="Enter your legal name."
+              htmlFor="formFullName"
+            >
+              <Input
+                id="formFullName"
+                name="fullName"
+                autoComplete="name"
+                placeholder="John Doe"
+                leftIcon={<User className="h-4 w-4" />}
+                required
+              />
+            </FormField>
+
+            <FormField
+              label="Email Address"
+              required
+              helperText="We'll use this email for account communication."
+              htmlFor="formEmail"
+            >
+              <Input
+                id="formEmail"
+                name="email"
+                type="email"
+                autoComplete="email"
+                placeholder="john@example.com"
+                leftIcon={<Mail className="h-4 w-4" />}
+                required
+              />
+            </FormField>
+
+            <FormField
+              label="Message"
+              helperText="Share any information relevant to your request."
+              htmlFor="formMessage"
+            >
+              <Textarea
+                id="formMessage"
+                name="message"
+                placeholder="Write your message..."
+              />
+            </FormField>
+
+            <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+              <Button
+                type="reset"
+                variant="outline"
+                fullWidth
+                className="sm:w-auto"
+              >
+                Reset
+              </Button>
+
+              <Button type="submit" fullWidth className="sm:w-auto">
+                Submit Form
+              </Button>
+            </div>
+          </Form>
         </section>
       </div>
     </main>
