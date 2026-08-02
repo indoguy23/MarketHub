@@ -14,4 +14,6 @@ export const ROUTES = {
 
   VENDOR_DASHBOARD: "/vendor",
   ADMIN_DASHBOARD: "/admin",
+
+  DESIGN_SYSTEM: '/design-system',
 } as const;

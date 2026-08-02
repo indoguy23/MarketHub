@@ -5,6 +5,7 @@ import ProductsPage from "../features/products/pages/ProductsPage";
 import CartPage from "../features/cart/pages/CartPage";
 import LoginPage from "../features/auth/pages/LoginPage";
 import NotFoundPage from "../components/feedback/NotFoundPage";
+import DesignSystemPage from "@/features/design-system/pages/DesignSystemPage";
 
 const AppRouter = () => {
   return (
@@ -18,6 +19,8 @@ const AppRouter = () => {
       <Route path={ROUTES.LOGIN} element={<LoginPage />} />
 
       <Route path="*" element={<NotFoundPage />} />
+
+      <Route path={ROUTES.DESIGN_SYSTEM} element={<DesignSystemPage />} />
     </Routes>
   );
 };
