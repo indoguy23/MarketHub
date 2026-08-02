@@ -1,5 +1,6 @@
 import {
   ButtonPlayground,
+  CheckboxPlayground,
   DesignSystemHeader,
   FormPlayground,
   InputPlayground,
@@ -16,6 +17,7 @@ const DesignSystemPage = () => {
         <InputPlayground />
         <TextareaPlayground />
         <SelectPlayground />
+        <CheckboxPlayground />
         <FormPlayground />
       </div>
     </main>
