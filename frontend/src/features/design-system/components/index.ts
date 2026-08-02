@@ -6,3 +6,4 @@ export { default as TextareaPlayground } from "./TextareaPlayground";
 export { default as SelectPlayground } from "./SelectPlayground";
 export { default as CheckboxPlayground } from "./CheckboxPlayground";
 export { default as RadioGroupPlayground } from "./RadioGroupPlayground";
+export { default as SwitchPlayground } from "./SwitchPlayground";
