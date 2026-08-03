@@ -11,6 +11,7 @@ import {
   LoaderPlayground,
   RadioGroupPlayground,
   SelectPlayground,
+  SkeletonPlayground,
   SwitchPlayground,
   TextareaPlayground,
 } from "../components";
@@ -26,6 +27,7 @@ const DesignSystemPage = () => {
         <AvatarPlayground />
         <DividerPlayground />
         <LoaderPlayground />
+        <SkeletonPlayground />
         <InputPlayground />
         <TextareaPlayground />
         <SelectPlayground />

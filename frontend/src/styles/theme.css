@@ -68,4 +68,12 @@
   --color-danger-foreground: var(--danger-foreground);
   --color-danger-subtle: var(--danger-subtle);
   --color-danger-subtle-foreground: var(--danger-subtle-foreground);
+
+  --animate-shimmer: shimmer 1.6s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
 }
