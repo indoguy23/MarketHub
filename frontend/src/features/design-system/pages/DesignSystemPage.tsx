@@ -5,6 +5,7 @@ import {
   CardPlayground,
   CheckboxPlayground,
   DesignSystemHeader,
+  DividerPlayground,
   FormPlayground,
   InputPlayground,
   RadioGroupPlayground,
@@ -22,6 +23,7 @@ const DesignSystemPage = () => {
         <CardPlayground />
         <BadgePlayground />
         <AvatarPlayground />
+        <DividerPlayground />
         <InputPlayground />
         <TextareaPlayground />
         <SelectPlayground />
