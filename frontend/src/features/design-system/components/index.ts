@@ -11,3 +11,4 @@ export { default as CardPlayground } from "./CardPlayground";
 export { default as BadgePlayground } from "./BadgePlayground";
 export { default as AvatarPlayground } from "./AvatarPlayground";
 export { default as DividerPlayground } from "./DividerPlayground";
+export { default as LoaderPlayground } from "./LoaderPlayground";

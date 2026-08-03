@@ -8,6 +8,7 @@ import {
   DividerPlayground,
   FormPlayground,
   InputPlayground,
+  LoaderPlayground,
   RadioGroupPlayground,
   SelectPlayground,
   SwitchPlayground,
@@ -24,6 +25,7 @@ const DesignSystemPage = () => {
         <BadgePlayground />
         <AvatarPlayground />
         <DividerPlayground />
+        <LoaderPlayground />
         <InputPlayground />
         <TextareaPlayground />
         <SelectPlayground />
