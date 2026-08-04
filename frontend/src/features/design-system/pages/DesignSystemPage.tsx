@@ -2,6 +2,7 @@ import {
   AlertPlayground,
   AvatarPlayground,
   BadgePlayground,
+  BreadcrumbPlayground,
   ButtonPlayground,
   CardPlayground,
   CheckboxPlayground,
@@ -30,6 +31,7 @@ const DesignSystemPage = () => {
         <EmptyStatePlayground />
         <AvatarPlayground />
         <DividerPlayground />
+        <BreadcrumbPlayground />
         <LoaderPlayground />
         <SkeletonPlayground />
         <InputPlayground />
