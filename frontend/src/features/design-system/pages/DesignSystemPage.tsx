@@ -16,6 +16,7 @@ import {
   SwitchPlayground,
   TextareaPlayground,
 } from "../components";
+import EmptyStatePlayground from "../components/EmptyStatePlayground";
 
 const DesignSystemPage = () => {
   return (
@@ -26,6 +27,7 @@ const DesignSystemPage = () => {
         <CardPlayground />
         <BadgePlayground />
         <AlertPlayground />
+        <EmptyStatePlayground />
         <AvatarPlayground />
         <DividerPlayground />
         <LoaderPlayground />
