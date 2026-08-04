@@ -1,4 +1,5 @@
 import {
+  AlertPlayground,
   AvatarPlayground,
   BadgePlayground,
   ButtonPlayground,
@@ -24,6 +25,7 @@ const DesignSystemPage = () => {
         <ButtonPlayground />
         <CardPlayground />
         <BadgePlayground />
+        <AlertPlayground />
         <AvatarPlayground />
         <DividerPlayground />
         <LoaderPlayground />
