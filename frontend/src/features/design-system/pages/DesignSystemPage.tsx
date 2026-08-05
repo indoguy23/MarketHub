@@ -18,6 +18,7 @@ import {
   SwitchPlayground,
   TabsPlayground,
   TextareaPlayground,
+  TooltipPlayground,
 } from "../components";
 import EmptyStatePlayground from "../components/EmptyStatePlayground";
 
@@ -36,6 +37,7 @@ const DesignSystemPage = () => {
         <BreadcrumbPlayground />
         <TabsPlayground />
         <DialogPlayground />
+        <TooltipPlayground />
         <LoaderPlayground />
         <SkeletonPlayground />
         <InputPlayground />

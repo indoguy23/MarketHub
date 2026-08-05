@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import "@/index.css";
 import App from "./App";
 import ThemeProvider from "./context/ThemeProvider";
-
+import Tooltip from "@/components/ui/Tooltip";
 import "@/index.css";
 
 const rootElement = document.getElementById("root");
@@ -17,9 +17,11 @@ if (!rootElement) {
 createRoot(rootElement).render(
   <StrictMode>
     <ThemeProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <Tooltip.Provider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Tooltip.Provider>
     </ThemeProvider>
   </StrictMode>,
 );
