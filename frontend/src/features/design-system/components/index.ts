@@ -16,3 +16,4 @@ export { default as SkeletonPlayground } from "./SkeletonPlayground";
 export { default as AlertPlayground } from "./AlertPlayground";
 export { default as BreadcrumbPlayground } from "./BreadcrumbPlayground";
 export { default as EmptyStatePlayground } from "./EmptyStatePlayground";
+export { default as TabsPlayground } from "./TabsPlayground";
