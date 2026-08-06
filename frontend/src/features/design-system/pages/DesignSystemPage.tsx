@@ -9,6 +9,7 @@ import {
   DesignSystemHeader,
   DialogPlayground,
   DividerPlayground,
+  DropdownMenuPlayground,
   FormPlayground,
   InputPlayground,
   LoaderPlayground,
@@ -38,6 +39,7 @@ const DesignSystemPage = () => {
         <TabsPlayground />
         <DialogPlayground />
         <TooltipPlayground />
+        <DropdownMenuPlayground />
         <LoaderPlayground />
         <SkeletonPlayground />
         <InputPlayground />

@@ -19,3 +19,4 @@ export { default as EmptyStatePlayground } from "./EmptyStatePlayground";
 export { default as TabsPlayground } from "./TabsPlayground";
 export { default as DialogPlayground } from "./DialogPlayground";
 export { default as TooltipPlayground } from "./TooltipPlayground";
+export { default as DropdownMenuPlayground } from "./DropdownMenuPlayground";
