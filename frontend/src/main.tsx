@@ -7,6 +7,7 @@ import App from "./App";
 import ThemeProvider from "./context/ThemeProvider";
 import Tooltip from "@/components/ui/Tooltip";
 import "@/index.css";
+import { ToastProvider } from "./components/ui/Toast";
 
 const rootElement = document.getElementById("root");
 
@@ -20,6 +21,7 @@ createRoot(rootElement).render(
       <Tooltip.Provider>
         <BrowserRouter>
           <App />
+           <ToastProvider />
         </BrowserRouter>
       </Tooltip.Provider>
     </ThemeProvider>
