@@ -14,6 +14,7 @@ import {
   InputPlayground,
   LoaderPlayground,
   RadioGroupPlayground,
+  SearchBarPlayground,
   SelectPlayground,
   SkeletonPlayground,
   SwitchPlayground,
@@ -42,6 +43,7 @@ const DesignSystemPage = () => {
         <DropdownMenuPlayground />
         <LoaderPlayground />
         <SkeletonPlayground />
+        <SearchBarPlayground />
         <InputPlayground />
         <TextareaPlayground />
         <SelectPlayground />
