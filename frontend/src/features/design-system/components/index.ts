@@ -21,3 +21,4 @@ export { default as DialogPlayground } from "./DialogPlayground";
 export { default as TooltipPlayground } from "./TooltipPlayground";
 export { default as DropdownMenuPlayground } from "./DropdownMenuPlayground";
 export { default as SearchBarPlayground } from "./SearchBarPlayground";
+export { default as PaginationPlayground } from "./PaginationPlayground";
