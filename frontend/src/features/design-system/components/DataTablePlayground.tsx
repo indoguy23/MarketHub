@@ -1,8 +1,12 @@
 import { useState } from "react";
 
-import type { RowSelectionState, SortingState } from "@tanstack/react-table";
+import type {
+  RowSelectionState,
+  SortingState,
+  VisibilityState,
+} from "@tanstack/react-table";
 
-import DataTable from "@/components/common/DataTable";
+import DataTable, { DataTableViewOptions } from "@/components/common/DataTable";
 import Card from "@/components/ui/Card";
 import EmptyState from "@/components/ui/EmptyState";
 
@@ -15,6 +19,8 @@ const DataTablePlayground = () => {
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
 
   const selectedRowCount = Object.keys(rowSelection).length;
+
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
   return (
     <section className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8">
@@ -132,6 +138,35 @@ const DataTablePlayground = () => {
               rowSelection={rowSelection}
               onRowSelectionChange={setRowSelection}
             />
+          </div>
+        </Card>
+
+        <Card>
+          <h3 className="font-semibold text-foreground">Column Visibility</h3>
+
+          <p className="mt-2 text-sm text-muted-foreground">
+            Users can choose which optional columns are visible.
+          </p>
+
+          <div className="mt-6">
+            <DataTable
+              columns={productTableColumns}
+              data={PRODUCT_TABLE_DATA}
+              getRowId={(product) => product.id}
+              columnVisibility={columnVisibility}
+              onColumnVisibilityChange={setColumnVisibility}
+              toolbar={(table) => <DataTableViewOptions table={table} />}
+            />
+          </div>
+
+          <div className="mt-5">
+            <p className="mb-2 text-sm font-medium text-foreground">
+              Current Column Visibility State
+            </p>
+
+            <pre className="overflow-x-auto rounded-xl bg-muted p-4 text-xs text-muted-foreground">
+              {JSON.stringify(columnVisibility, null, 2)}
+            </pre>
           </div>
         </Card>
 

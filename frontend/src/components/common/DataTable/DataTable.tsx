@@ -8,6 +8,7 @@ import {
   getSortedRowModel,
   type RowSelectionState,
   type SortingState,
+  type VisibilityState,
   useReactTable,
 } from "@tanstack/react-table";
 
@@ -31,15 +32,23 @@ const DataTable = <TData, TValue = unknown>({
   rowSelection,
   onRowSelectionChange,
   enableRowSelection = false,
+  columnVisibility,
+  onColumnVisibilityChange,
+  toolbar,
 }: DataTableProps<TData, TValue>) => {
   const [internalSorting, setInternalSorting] = useState<SortingState>([]);
 
   const [internalRowSelection, setInternalRowSelection] =
     useState<RowSelectionState>({});
 
+  const [internalColumnVisibility, setInternalColumnVisibility] =
+    useState<VisibilityState>({});
+
   const resolvedSorting = sorting ?? internalSorting;
 
   const resolvedRowSelection = rowSelection ?? internalRowSelection;
+
+  const resolvedColumnVisibility = columnVisibility ?? internalColumnVisibility;
 
   const handleSortingChange = (
     updater: SortingState | ((old: SortingState) => SortingState),
@@ -71,6 +80,22 @@ const DataTable = <TData, TValue = unknown>({
     setInternalRowSelection(nextSelection);
   };
 
+  const handleColumnVisibilityChange = (
+    updater: VisibilityState | ((old: VisibilityState) => VisibilityState),
+  ) => {
+    const nextVisibility =
+      typeof updater === "function"
+        ? updater(resolvedColumnVisibility)
+        : updater;
+
+    if (onColumnVisibilityChange) {
+      onColumnVisibilityChange(nextVisibility);
+      return;
+    }
+
+    setInternalColumnVisibility(nextVisibility);
+  };
+
   const table = useReactTable({
     data,
     columns,
@@ -78,11 +103,14 @@ const DataTable = <TData, TValue = unknown>({
     state: {
       sorting: resolvedSorting,
       rowSelection: resolvedRowSelection,
+      columnVisibility: resolvedColumnVisibility,
     },
 
     onSortingChange: handleSortingChange,
 
     onRowSelectionChange: handleRowSelectionChange,
+
+    onColumnVisibilityChange: handleColumnVisibilityChange,
 
     enableRowSelection,
 
@@ -100,72 +128,80 @@ const DataTable = <TData, TValue = unknown>({
   const visibleColumnCount = table.getVisibleLeafColumns().length;
 
   return (
-    <div className={cn(dataTableStyles.container, className)}>
-      <div className={dataTableStyles.scrollArea}>
-        <table className={cn(dataTableStyles.table, tableClassName)}>
-          <thead className={dataTableStyles.header}>
-            {headerGroups.map((headerGroup) => (
-              <tr key={headerGroup.id} className={dataTableStyles.headerRow}>
-                {headerGroup.headers.map((header) => (
-                  <th
-                    key={header.id}
-                    colSpan={header.colSpan}
-                    scope="col"
-                    className={dataTableStyles.headerCell}
-                  >
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext(),
-                        )}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
+    <div className="space-y-4">
+      {toolbar && (
+        <div className="flex flex-wrap items-center justify-end gap-3">
+          {toolbar(table)}
+        </div>
+      )}
 
-          <tbody className={dataTableStyles.body}>
-            {loading ? (
-              <DataTableSkeleton columnCount={visibleColumnCount} />
-            ) : rows.length > 0 ? (
-              rows.map((row) => (
-                <tr
-                  key={row.id}
-                  className={cn(
-                    dataTableStyles.row,
-                    row.getIsSelected() && "bg-muted/50",
-                  )}
-                  data-state={row.getIsSelected() ? "selected" : undefined}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id} className={dataTableStyles.cell}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext(),
-                      )}
-                    </td>
+      <div className={cn(dataTableStyles.container, className)}>
+        <div className={dataTableStyles.scrollArea}>
+          <table className={cn(dataTableStyles.table, tableClassName)}>
+            <thead className={dataTableStyles.header}>
+              {headerGroups.map((headerGroup) => (
+                <tr key={headerGroup.id} className={dataTableStyles.headerRow}>
+                  {headerGroup.headers.map((header) => (
+                    <th
+                      key={header.id}
+                      colSpan={header.colSpan}
+                      scope="col"
+                      className={dataTableStyles.headerCell}
+                    >
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext(),
+                          )}
+                    </th>
                   ))}
                 </tr>
-              ))
-            ) : (
-              <tr>
-                <td
-                  colSpan={visibleColumnCount}
-                  className={dataTableStyles.emptyCell}
-                >
-                  {emptyState ?? (
-                    <EmptyState
-                      className="border-0 py-14"
-                      title="No data available"
-                      description="There are currently no records to display."
-                    />
-                  )}
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+              ))}
+            </thead>
+
+            <tbody className={dataTableStyles.body}>
+              {loading ? (
+                <DataTableSkeleton columnCount={visibleColumnCount} />
+              ) : rows.length > 0 ? (
+                rows.map((row) => (
+                  <tr
+                    key={row.id}
+                    className={cn(
+                      dataTableStyles.row,
+                      row.getIsSelected() && "bg-muted/50",
+                    )}
+                    data-state={row.getIsSelected() ? "selected" : undefined}
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <td key={cell.id} className={dataTableStyles.cell}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext(),
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td
+                    colSpan={visibleColumnCount}
+                    className={dataTableStyles.emptyCell}
+                  >
+                    {emptyState ?? (
+                      <EmptyState
+                        className="border-0 py-14"
+                        title="No data available"
+                        description="There are currently no records to display."
+                      />
+                    )}
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
