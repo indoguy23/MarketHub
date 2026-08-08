@@ -1,6 +1,9 @@
 import type { ColumnDef } from "@tanstack/react-table";
 
-import { DataTableColumnHeader } from "@/components/common/DataTable";
+import {
+  DataTableColumnHeader,
+  createSelectionColumn,
+} from "@/components/common/DataTable";
 import Badge from "@/components/ui/Badge";
 
 import type { ProductTableRow } from "../types/productTable.types";
@@ -11,10 +14,13 @@ const currencyFormatter = new Intl.NumberFormat("en-IN", {
   maximumFractionDigits: 0,
 });
 
+const selectionColumn = createSelectionColumn<ProductTableRow>();
+
 export const productTableColumns: ColumnDef<ProductTableRow>[] = [
+  selectionColumn,
+
   {
     accessorKey: "name",
-
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Product" />
     ),

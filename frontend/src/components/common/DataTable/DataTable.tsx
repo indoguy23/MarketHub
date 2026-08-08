@@ -1,16 +1,15 @@
 /* eslint-disable react-hooks/incompatible-library */
 
+import { useState } from "react";
+
 import {
   flexRender,
   getCoreRowModel,
   getSortedRowModel,
+  type RowSelectionState,
   type SortingState,
   useReactTable,
 } from "@tanstack/react-table";
-
-// rest of the file...
-
-import { useState } from "react";
 
 import EmptyState from "@/components/ui/EmptyState";
 import { cn } from "@/utils/cn";
@@ -29,10 +28,18 @@ const DataTable = <TData, TValue = unknown>({
   tableClassName,
   sorting,
   onSortingChange,
+  rowSelection,
+  onRowSelectionChange,
+  enableRowSelection = false,
 }: DataTableProps<TData, TValue>) => {
   const [internalSorting, setInternalSorting] = useState<SortingState>([]);
 
+  const [internalRowSelection, setInternalRowSelection] =
+    useState<RowSelectionState>({});
+
   const resolvedSorting = sorting ?? internalSorting;
+
+  const resolvedRowSelection = rowSelection ?? internalRowSelection;
 
   const handleSortingChange = (
     updater: SortingState | ((old: SortingState) => SortingState),
@@ -48,15 +55,36 @@ const DataTable = <TData, TValue = unknown>({
     setInternalSorting(nextSorting);
   };
 
+  const handleRowSelectionChange = (
+    updater:
+      | RowSelectionState
+      | ((old: RowSelectionState) => RowSelectionState),
+  ) => {
+    const nextSelection =
+      typeof updater === "function" ? updater(resolvedRowSelection) : updater;
+
+    if (onRowSelectionChange) {
+      onRowSelectionChange(nextSelection);
+      return;
+    }
+
+    setInternalRowSelection(nextSelection);
+  };
+
   const table = useReactTable({
     data,
     columns,
 
     state: {
       sorting: resolvedSorting,
+      rowSelection: resolvedRowSelection,
     },
 
     onSortingChange: handleSortingChange,
+
+    onRowSelectionChange: handleRowSelectionChange,
+
+    enableRowSelection,
 
     getCoreRowModel: getCoreRowModel(),
 
@@ -68,6 +96,8 @@ const DataTable = <TData, TValue = unknown>({
   const headerGroups = table.getHeaderGroups();
 
   const rows = table.getRowModel().rows;
+
+  const visibleColumnCount = table.getVisibleLeafColumns().length;
 
   return (
     <div className={cn(dataTableStyles.container, className)}>
@@ -97,10 +127,17 @@ const DataTable = <TData, TValue = unknown>({
 
           <tbody className={dataTableStyles.body}>
             {loading ? (
-              <DataTableSkeleton columnCount={columns.length} />
+              <DataTableSkeleton columnCount={visibleColumnCount} />
             ) : rows.length > 0 ? (
               rows.map((row) => (
-                <tr key={row.id} className={dataTableStyles.row}>
+                <tr
+                  key={row.id}
+                  className={cn(
+                    dataTableStyles.row,
+                    row.getIsSelected() && "bg-muted/50",
+                  )}
+                  data-state={row.getIsSelected() ? "selected" : undefined}
+                >
                   {row.getVisibleCells().map((cell) => (
                     <td key={cell.id} className={dataTableStyles.cell}>
                       {flexRender(
@@ -114,7 +151,7 @@ const DataTable = <TData, TValue = unknown>({
             ) : (
               <tr>
                 <td
-                  colSpan={columns.length}
+                  colSpan={visibleColumnCount}
                   className={dataTableStyles.emptyCell}
                 >
                   {emptyState ?? (

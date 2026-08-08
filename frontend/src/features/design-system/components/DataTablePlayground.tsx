@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import type { SortingState } from "@tanstack/react-table";
+import type { RowSelectionState, SortingState } from "@tanstack/react-table";
 
 import DataTable from "@/components/common/DataTable";
 import Card from "@/components/ui/Card";
@@ -11,6 +11,10 @@ import { productTableColumns } from "./ProductTableColumns";
 
 const DataTablePlayground = () => {
   const [sorting, setSorting] = useState<SortingState>([]);
+
+  const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
+
+  const selectedRowCount = Object.keys(rowSelection).length;
 
   return (
     <section className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8">
@@ -70,6 +74,64 @@ const DataTablePlayground = () => {
             <pre className="overflow-x-auto rounded-xl bg-muted p-4 text-xs text-muted-foreground">
               {JSON.stringify(sorting, null, 2)}
             </pre>
+          </div>
+        </Card>
+
+        {/* Row Selection */}
+
+        <Card>
+          <h3 className="font-semibold text-foreground">Row Selection</h3>
+
+          <p className="mt-2 text-sm text-muted-foreground">
+            Select individual rows or use the header checkbox to select all
+            visible rows.
+          </p>
+
+          <div className="mt-6">
+            <DataTable
+              columns={productTableColumns}
+              data={PRODUCT_TABLE_DATA}
+              getRowId={(product) => product.id}
+              enableRowSelection
+              rowSelection={rowSelection}
+              onRowSelectionChange={setRowSelection}
+            />
+          </div>
+
+          <div className="mt-5 flex flex-col gap-4">
+            <p className="text-sm text-muted-foreground">
+              Selected rows:{" "}
+              <strong className="text-foreground">{selectedRowCount}</strong>
+            </p>
+
+            <pre className="overflow-x-auto rounded-xl bg-muted p-4 text-xs text-muted-foreground">
+              {JSON.stringify(rowSelection, null, 2)}
+            </pre>
+          </div>
+        </Card>
+
+        {/* Sorting + Selection */}
+
+        <Card>
+          <h3 className="font-semibold text-foreground">
+            Sorting + Row Selection
+          </h3>
+
+          <p className="mt-2 text-sm text-muted-foreground">
+            Sorting and selection can work together in the same table.
+          </p>
+
+          <div className="mt-6">
+            <DataTable
+              columns={productTableColumns}
+              data={PRODUCT_TABLE_DATA}
+              getRowId={(product) => product.id}
+              sorting={sorting}
+              onSortingChange={setSorting}
+              enableRowSelection
+              rowSelection={rowSelection}
+              onRowSelectionChange={setRowSelection}
+            />
           </div>
         </Card>
 
