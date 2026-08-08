@@ -1,10 +1,13 @@
 import { useState } from "react";
 
 import type {
+  ColumnFiltersState,
   RowSelectionState,
   SortingState,
   VisibilityState,
 } from "@tanstack/react-table";
+
+import SearchBar from "@/components/common/SearchBar";
 
 import DataTable, { DataTableViewOptions } from "@/components/common/DataTable";
 import Card from "@/components/ui/Card";
@@ -21,6 +24,10 @@ const DataTablePlayground = () => {
   const selectedRowCount = Object.keys(rowSelection).length;
 
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
+
+  const [globalFilter, setGlobalFilter] = useState("");
+
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   return (
     <section className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8">
@@ -168,6 +175,47 @@ const DataTablePlayground = () => {
               {JSON.stringify(columnVisibility, null, 2)}
             </pre>
           </div>
+        </Card>
+
+        {/* Global Search */}
+
+        <Card>
+          <h3 className="font-semibold text-foreground">Global Search</h3>
+
+          <p className="mt-2 text-sm text-muted-foreground">
+            Search across the available product data.
+          </p>
+
+          <div className="mt-6">
+            <DataTable
+              columns={productTableColumns}
+              data={PRODUCT_TABLE_DATA}
+              getRowId={(product) => product.id}
+              globalFilter={globalFilter}
+              onGlobalFilterChange={setGlobalFilter}
+              columnFilters={columnFilters}
+              onColumnFiltersChange={setColumnFilters}
+              toolbar={(table) => (
+                <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <SearchBar
+                    value={(table.getState().globalFilter as string) ?? ""}
+                    onChange={(value) => table.setGlobalFilter(value)}
+                    placeholder="Search products..."
+                    className="w-full sm:max-w-sm"
+                  />
+
+                  <DataTableViewOptions table={table} />
+                </div>
+              )}
+            />
+          </div>
+
+          <p className="mt-4 text-sm text-muted-foreground">
+            Current search:{" "}
+            <strong className="text-foreground">
+              {globalFilter || "Empty"}
+            </strong>
+          </p>
         </Card>
 
         {/* Loading State */}

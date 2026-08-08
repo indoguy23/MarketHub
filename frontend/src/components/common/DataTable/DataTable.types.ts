@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 import type {
   ColumnDef,
+  ColumnFiltersState,
   RowSelectionState,
   SortingState,
   Table,
@@ -21,18 +22,21 @@ export interface DataTableProps<TData, TValue = unknown> {
   tableClassName?: string;
 
   sorting?: SortingState;
-
   onSortingChange?: (sorting: SortingState) => void;
 
   rowSelection?: RowSelectionState;
-
   onRowSelectionChange?: (selection: RowSelectionState) => void;
 
   enableRowSelection?: boolean;
 
   columnVisibility?: VisibilityState;
-
   onColumnVisibilityChange?: (visibility: VisibilityState) => void;
+
+  columnFilters?: ColumnFiltersState;
+  onColumnFiltersChange?: (filters: ColumnFiltersState) => void;
+
+  globalFilter?: string;
+  onGlobalFilterChange?: (value: string) => void;
 
   toolbar?: (table: Table<TData>) => ReactNode;
 }

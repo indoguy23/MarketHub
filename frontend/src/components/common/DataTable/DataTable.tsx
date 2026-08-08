@@ -5,7 +5,9 @@ import { useState } from "react";
 import {
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
   getSortedRowModel,
+  type ColumnFiltersState,
   type RowSelectionState,
   type SortingState,
   type VisibilityState,
@@ -34,6 +36,10 @@ const DataTable = <TData, TValue = unknown>({
   enableRowSelection = false,
   columnVisibility,
   onColumnVisibilityChange,
+  columnFilters,
+  onColumnFiltersChange,
+  globalFilter,
+  onGlobalFilterChange,
   toolbar,
 }: DataTableProps<TData, TValue>) => {
   const [internalSorting, setInternalSorting] = useState<SortingState>([]);
@@ -44,11 +50,20 @@ const DataTable = <TData, TValue = unknown>({
   const [internalColumnVisibility, setInternalColumnVisibility] =
     useState<VisibilityState>({});
 
+  const [internalColumnFilters, setInternalColumnFilters] =
+    useState<ColumnFiltersState>([]);
+
+  const [internalGlobalFilter, setInternalGlobalFilter] = useState("");
+
   const resolvedSorting = sorting ?? internalSorting;
 
   const resolvedRowSelection = rowSelection ?? internalRowSelection;
 
   const resolvedColumnVisibility = columnVisibility ?? internalColumnVisibility;
+
+  const resolvedColumnFilters = columnFilters ?? internalColumnFilters;
+
+  const resolvedGlobalFilter = globalFilter ?? internalGlobalFilter;
 
   const handleSortingChange = (
     updater: SortingState | ((old: SortingState) => SortingState),
@@ -96,6 +111,36 @@ const DataTable = <TData, TValue = unknown>({
     setInternalColumnVisibility(nextVisibility);
   };
 
+  const handleColumnFiltersChange = (
+    updater:
+      | ColumnFiltersState
+      | ((old: ColumnFiltersState) => ColumnFiltersState),
+  ) => {
+    const nextFilters =
+      typeof updater === "function" ? updater(resolvedColumnFilters) : updater;
+
+    if (onColumnFiltersChange) {
+      onColumnFiltersChange(nextFilters);
+      return;
+    }
+
+    setInternalColumnFilters(nextFilters);
+  };
+
+  const handleGlobalFilterChange = (
+    updater: string | ((old: string) => string),
+  ) => {
+    const nextValue =
+      typeof updater === "function" ? updater(resolvedGlobalFilter) : updater;
+
+    if (onGlobalFilterChange) {
+      onGlobalFilterChange(nextValue);
+      return;
+    }
+
+    setInternalGlobalFilter(nextValue);
+  };
+
   const table = useReactTable({
     data,
     columns,
@@ -104,6 +149,8 @@ const DataTable = <TData, TValue = unknown>({
       sorting: resolvedSorting,
       rowSelection: resolvedRowSelection,
       columnVisibility: resolvedColumnVisibility,
+      columnFilters: resolvedColumnFilters,
+      globalFilter: resolvedGlobalFilter,
     },
 
     onSortingChange: handleSortingChange,
@@ -112,9 +159,15 @@ const DataTable = <TData, TValue = unknown>({
 
     onColumnVisibilityChange: handleColumnVisibilityChange,
 
+    onColumnFiltersChange: handleColumnFiltersChange,
+
+    onGlobalFilterChange: handleGlobalFilterChange,
+
     enableRowSelection,
 
     getCoreRowModel: getCoreRowModel(),
+
+    getFilteredRowModel: getFilteredRowModel(),
 
     getSortedRowModel: getSortedRowModel(),
 
