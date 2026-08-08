@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { ColumnDef } from "@tanstack/react-table";
+import type { ColumnDef, SortingState } from "@tanstack/react-table";
 
 export interface DataTableProps<TData, TValue = unknown> {
   columns: ColumnDef<TData, TValue>[];
@@ -14,4 +14,8 @@ export interface DataTableProps<TData, TValue = unknown> {
   className?: string;
 
   tableClassName?: string;
+
+  sorting?: SortingState;
+
+  onSortingChange?: (sorting: SortingState) => void;
 }

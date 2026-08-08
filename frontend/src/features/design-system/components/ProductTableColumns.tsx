@@ -1,5 +1,6 @@
 import type { ColumnDef } from "@tanstack/react-table";
 
+import { DataTableColumnHeader } from "@/components/common/DataTable";
 import Badge from "@/components/ui/Badge";
 
 import type { ProductTableRow } from "../types/productTable.types";
@@ -13,7 +14,10 @@ const currencyFormatter = new Intl.NumberFormat("en-IN", {
 export const productTableColumns: ColumnDef<ProductTableRow>[] = [
   {
     accessorKey: "name",
-    header: "Product",
+
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Product" />
+    ),
 
     cell: ({ row }) => (
       <div>
@@ -26,25 +30,34 @@ export const productTableColumns: ColumnDef<ProductTableRow>[] = [
 
   {
     accessorKey: "category",
-    header: "Category",
+
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Category" />
+    ),
   },
 
   {
     accessorKey: "price",
-    header: "Price",
+
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Price" />
+    ),
 
     cell: ({ row }) => currencyFormatter.format(row.original.price),
   },
 
   {
     accessorKey: "stock",
-    header: "Stock",
+
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Stock" />
+    ),
 
     cell: ({ row }) => (
       <span
         className={
           row.original.stock === 0
-            ? "font-medium text-destructive"
+            ? "font-medium text-danger"
             : "text-foreground"
         }
       >
@@ -55,6 +68,9 @@ export const productTableColumns: ColumnDef<ProductTableRow>[] = [
 
   {
     accessorKey: "status",
+
+    enableSorting: false,
+
     header: "Status",
 
     cell: ({ row }) => {

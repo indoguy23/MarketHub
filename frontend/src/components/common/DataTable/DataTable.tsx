@@ -1,8 +1,16 @@
+/* eslint-disable react-hooks/incompatible-library */
+
 import {
   flexRender,
   getCoreRowModel,
+  getSortedRowModel,
+  type SortingState,
   useReactTable,
 } from "@tanstack/react-table";
+
+// rest of the file...
+
+import { useState } from "react";
 
 import EmptyState from "@/components/ui/EmptyState";
 import { cn } from "@/utils/cn";
@@ -19,17 +27,46 @@ const DataTable = <TData, TValue = unknown>({
   getRowId,
   className,
   tableClassName,
+  sorting,
+  onSortingChange,
 }: DataTableProps<TData, TValue>) => {
+  const [internalSorting, setInternalSorting] = useState<SortingState>([]);
+
+  const resolvedSorting = sorting ?? internalSorting;
+
+  const handleSortingChange = (
+    updater: SortingState | ((old: SortingState) => SortingState),
+  ) => {
+    const nextSorting =
+      typeof updater === "function" ? updater(resolvedSorting) : updater;
+
+    if (onSortingChange) {
+      onSortingChange(nextSorting);
+      return;
+    }
+
+    setInternalSorting(nextSorting);
+  };
+
   const table = useReactTable({
     data,
     columns,
 
+    state: {
+      sorting: resolvedSorting,
+    },
+
+    onSortingChange: handleSortingChange,
+
     getCoreRowModel: getCoreRowModel(),
+
+    getSortedRowModel: getSortedRowModel(),
 
     getRowId: getRowId ? (row, index) => getRowId(row, index) : undefined,
   });
 
   const headerGroups = table.getHeaderGroups();
+
   const rows = table.getRowModel().rows;
 
   return (
