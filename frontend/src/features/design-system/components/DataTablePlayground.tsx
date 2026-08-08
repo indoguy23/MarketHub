@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { RotateCcw } from "lucide-react";
+
 import type {
   ColumnFiltersState,
   RowSelectionState,
@@ -7,11 +9,14 @@ import type {
   VisibilityState,
 } from "@tanstack/react-table";
 
-import SearchBar from "@/components/common/SearchBar";
-
 import DataTable, { DataTableViewOptions } from "@/components/common/DataTable";
+import SearchBar from "@/components/common/SearchBar";
+import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import EmptyState from "@/components/ui/EmptyState";
+import Select from "@/components/ui/form/Select";
+
+import { PRODUCT_CATEGORY_FILTER_OPTIONS } from "@/constants/selectOptions";
 
 import { PRODUCT_TABLE_DATA } from "../data/productTable.data";
 import { productTableColumns } from "./ProductTableColumns";
@@ -21,13 +26,13 @@ const DataTablePlayground = () => {
 
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
 
-  const selectedRowCount = Object.keys(rowSelection).length;
-
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
   const [globalFilter, setGlobalFilter] = useState("");
 
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+
+  const selectedRowCount = Object.keys(rowSelection).length;
 
   return (
     <section className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8">
@@ -148,6 +153,8 @@ const DataTablePlayground = () => {
           </div>
         </Card>
 
+        {/* Column Visibility */}
+
         <Card>
           <h3 className="font-semibold text-foreground">Column Visibility</h3>
 
@@ -177,13 +184,13 @@ const DataTablePlayground = () => {
           </div>
         </Card>
 
-        {/* Global Search */}
+        {/* Search + Column Filter */}
 
         <Card>
-          <h3 className="font-semibold text-foreground">Global Search</h3>
+          <h3 className="font-semibold text-foreground">Search & Filters</h3>
 
           <p className="mt-2 text-sm text-muted-foreground">
-            Search across the available product data.
+            Combine global search, category filtering and column visibility.
           </p>
 
           <div className="mt-6">
@@ -195,27 +202,76 @@ const DataTablePlayground = () => {
               onGlobalFilterChange={setGlobalFilter}
               columnFilters={columnFilters}
               onColumnFiltersChange={setColumnFilters}
-              toolbar={(table) => (
-                <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <SearchBar
-                    value={(table.getState().globalFilter as string) ?? ""}
-                    onChange={(value) => table.setGlobalFilter(value)}
-                    placeholder="Search products..."
-                    className="w-full sm:max-w-sm"
-                  />
+              columnVisibility={columnVisibility}
+              onColumnVisibilityChange={setColumnVisibility}
+              toolbar={(table) => {
+                const categoryColumn = table.getColumn("category");
 
-                  <DataTableViewOptions table={table} />
-                </div>
-              )}
+                const categoryValue =
+                  (categoryColumn?.getFilterValue() as string) ?? "";
+
+                const hasFilters =
+                  Boolean(table.getState().globalFilter) ||
+                  table.getState().columnFilters.length > 0;
+
+                return (
+                  <div className="flex w-full flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+                    <SearchBar
+                      value={(table.getState().globalFilter as string) ?? ""}
+                      onChange={(value) => table.setGlobalFilter(value)}
+                      placeholder="Search products..."
+                      className="w-full lg:max-w-sm"
+                    />
+
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                      <div className="w-full sm:w-56">
+                        <Select
+                          value={categoryValue}
+                          onChange={(event) => {
+                            const value = event.target.value;
+
+                            categoryColumn?.setFilterValue(value || undefined);
+                          }}
+                          options={PRODUCT_CATEGORY_FILTER_OPTIONS}
+                        />
+                      </div>
+
+                      {hasFilters && (
+                        <Button
+                          variant="ghost"
+                          leftIcon={<RotateCcw className="h-4 w-4" />}
+                          onClick={() => {
+                            table.setGlobalFilter("");
+                            table.resetColumnFilters();
+                          }}
+                        >
+                          Reset
+                        </Button>
+                      )}
+
+                      <DataTableViewOptions table={table} />
+                    </div>
+                  </div>
+                );
+              }}
             />
           </div>
 
-          <p className="mt-4 text-sm text-muted-foreground">
-            Current search:{" "}
-            <strong className="text-foreground">
-              {globalFilter || "Empty"}
-            </strong>
-          </p>
+          <div className="mt-5 space-y-2">
+            <p className="text-sm text-muted-foreground">
+              Current search:{" "}
+              <strong className="text-foreground">
+                {globalFilter || "Empty"}
+              </strong>
+            </p>
+
+            <p className="text-sm text-muted-foreground">
+              Active column filters:{" "}
+              <strong className="text-foreground">
+                {columnFilters.length}
+              </strong>
+            </p>
+          </div>
         </Card>
 
         {/* Loading State */}

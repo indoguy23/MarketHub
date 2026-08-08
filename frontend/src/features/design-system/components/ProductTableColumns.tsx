@@ -1,8 +1,8 @@
 import type { ColumnDef } from "@tanstack/react-table";
 
 import {
-  DataTableColumnHeader,
   createSelectionColumn,
+  DataTableColumnHeader,
 } from "@/components/common/DataTable";
 import Badge from "@/components/ui/Badge";
 
@@ -21,6 +21,9 @@ export const productTableColumns: ColumnDef<ProductTableRow>[] = [
 
   {
     accessorKey: "name",
+
+    enableHiding: false,
+
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Product" />
     ),
@@ -40,6 +43,8 @@ export const productTableColumns: ColumnDef<ProductTableRow>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Category" />
     ),
+
+    enableColumnFilter: true,
   },
 
   {
@@ -76,6 +81,7 @@ export const productTableColumns: ColumnDef<ProductTableRow>[] = [
     accessorKey: "status",
 
     enableSorting: false,
+    enableColumnFilter: false,
 
     header: "Status",
 
