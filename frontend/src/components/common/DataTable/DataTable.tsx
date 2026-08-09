@@ -6,8 +6,10 @@ import {
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
+  getPaginationRowModel,
   getSortedRowModel,
   type ColumnFiltersState,
+  type PaginationState,
   type RowSelectionState,
   type SortingState,
   type VisibilityState,
@@ -29,18 +31,29 @@ const DataTable = <TData, TValue = unknown>({
   getRowId,
   className,
   tableClassName,
+
   sorting,
   onSortingChange,
+
   rowSelection,
   onRowSelectionChange,
   enableRowSelection = false,
+
   columnVisibility,
   onColumnVisibilityChange,
+
   columnFilters,
   onColumnFiltersChange,
+
   globalFilter,
   onGlobalFilterChange,
+
+  pagination,
+  onPaginationChange,
+  enablePagination = false,
+
   toolbar,
+  footer,
 }: DataTableProps<TData, TValue>) => {
   const [internalSorting, setInternalSorting] = useState<SortingState>([]);
 
@@ -55,6 +68,13 @@ const DataTable = <TData, TValue = unknown>({
 
   const [internalGlobalFilter, setInternalGlobalFilter] = useState("");
 
+  const [internalPagination, setInternalPagination] = useState<PaginationState>(
+    {
+      pageIndex: 0,
+      pageSize: 10,
+    },
+  );
+
   const resolvedSorting = sorting ?? internalSorting;
 
   const resolvedRowSelection = rowSelection ?? internalRowSelection;
@@ -64,6 +84,8 @@ const DataTable = <TData, TValue = unknown>({
   const resolvedColumnFilters = columnFilters ?? internalColumnFilters;
 
   const resolvedGlobalFilter = globalFilter ?? internalGlobalFilter;
+
+  const resolvedPagination = pagination ?? internalPagination;
 
   const handleSortingChange = (
     updater: SortingState | ((old: SortingState) => SortingState),
@@ -141,6 +163,20 @@ const DataTable = <TData, TValue = unknown>({
     setInternalGlobalFilter(nextValue);
   };
 
+  const handlePaginationChange = (
+    updater: PaginationState | ((old: PaginationState) => PaginationState),
+  ) => {
+    const nextPagination =
+      typeof updater === "function" ? updater(resolvedPagination) : updater;
+
+    if (onPaginationChange) {
+      onPaginationChange(nextPagination);
+      return;
+    }
+
+    setInternalPagination(nextPagination);
+  };
+
   const table = useReactTable({
     data,
     columns,
@@ -151,6 +187,7 @@ const DataTable = <TData, TValue = unknown>({
       columnVisibility: resolvedColumnVisibility,
       columnFilters: resolvedColumnFilters,
       globalFilter: resolvedGlobalFilter,
+      pagination: resolvedPagination,
     },
 
     onSortingChange: handleSortingChange,
@@ -163,6 +200,8 @@ const DataTable = <TData, TValue = unknown>({
 
     onGlobalFilterChange: handleGlobalFilterChange,
 
+    onPaginationChange: handlePaginationChange,
+
     enableRowSelection,
 
     getCoreRowModel: getCoreRowModel(),
@@ -170,6 +209,10 @@ const DataTable = <TData, TValue = unknown>({
     getFilteredRowModel: getFilteredRowModel(),
 
     getSortedRowModel: getSortedRowModel(),
+
+    getPaginationRowModel: enablePagination
+      ? getPaginationRowModel()
+      : undefined,
 
     getRowId: getRowId ? (row, index) => getRowId(row, index) : undefined,
   });
@@ -182,12 +225,14 @@ const DataTable = <TData, TValue = unknown>({
 
   return (
     <div className="space-y-4">
+      {/* Toolbar */}
       {toolbar && (
         <div className="flex flex-wrap items-center justify-end gap-3">
           {toolbar(table)}
         </div>
       )}
 
+      {/* Table */}
       <div className={cn(dataTableStyles.container, className)}>
         <div className={dataTableStyles.scrollArea}>
           <table className={cn(dataTableStyles.table, tableClassName)}>
@@ -256,6 +301,9 @@ const DataTable = <TData, TValue = unknown>({
           </table>
         </div>
       </div>
+
+      {/* Footer */}
+      {footer && <div>{footer(table)}</div>}
     </div>
   );
 };

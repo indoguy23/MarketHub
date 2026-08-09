@@ -3,12 +3,12 @@ import type { ReactNode } from "react";
 import type {
   ColumnDef,
   ColumnFiltersState,
+  PaginationState,
   RowSelectionState,
   SortingState,
   Table,
   VisibilityState,
 } from "@tanstack/react-table";
-
 export interface DataTableProps<TData, TValue = unknown> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
@@ -38,5 +38,13 @@ export interface DataTableProps<TData, TValue = unknown> {
   globalFilter?: string;
   onGlobalFilterChange?: (value: string) => void;
 
+  pagination?: PaginationState;
+
+  onPaginationChange?: (pagination: PaginationState) => void;
+
+  enablePagination?: boolean;
+
   toolbar?: (table: Table<TData>) => ReactNode;
+
+  footer?: (table: Table<TData>) => ReactNode;
 }

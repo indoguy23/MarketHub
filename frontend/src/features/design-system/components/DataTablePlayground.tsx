@@ -4,12 +4,17 @@ import { RotateCcw } from "lucide-react";
 
 import type {
   ColumnFiltersState,
+  PaginationState,
   RowSelectionState,
   SortingState,
   VisibilityState,
 } from "@tanstack/react-table";
 
-import DataTable, { DataTableViewOptions } from "@/components/common/DataTable";
+import DataTable, {
+  DataTablePagination,
+  DataTableViewOptions,
+} from "@/components/common/DataTable";
+
 import SearchBar from "@/components/common/SearchBar";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
@@ -31,6 +36,11 @@ const DataTablePlayground = () => {
   const [globalFilter, setGlobalFilter] = useState("");
 
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+
+  const [pagination, setPagination] = useState<PaginationState>({
+    pageIndex: 0,
+    pageSize: 2,
+  });
 
   const selectedRowCount = Object.keys(rowSelection).length;
 
@@ -271,6 +281,33 @@ const DataTablePlayground = () => {
                 {columnFilters.length}
               </strong>
             </p>
+          </div>
+        </Card>
+
+        {/* Pagination */}
+
+        <Card>
+          <h3 className="font-semibold text-foreground">Pagination</h3>
+
+          <p className="mt-2 text-sm text-muted-foreground">
+            Navigate through table data and control the number of rows displayed
+            per page.
+          </p>
+
+          <div className="mt-6">
+            <DataTable
+              columns={productTableColumns}
+              data={PRODUCT_TABLE_DATA}
+              getRowId={(product) => product.id}
+              enablePagination
+              pagination={pagination}
+              onPaginationChange={setPagination}
+              toolbar={(table) => <DataTableViewOptions table={table} />}
+            />
+          </div>
+
+          <div className="mt-4">
+            {/* We'll connect this in the next tiny adjustment */}
           </div>
         </Card>
 
