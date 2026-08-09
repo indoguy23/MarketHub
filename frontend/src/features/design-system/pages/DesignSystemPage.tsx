@@ -16,6 +16,7 @@ import {
   LoaderPlayground,
   PaginationPlayground,
   ProductCardPlayground,
+  ProductFiltersPlayground,
   RadioGroupPlayground,
   SearchBarPlayground,
   SelectPlayground,
@@ -49,6 +50,7 @@ const DesignSystemPage = () => {
         <SearchBarPlayground />
         <PaginationPlayground />
         <ProductCardPlayground />
+        <ProductFiltersPlayground />
         <DataTablePlayground />
         <InputPlayground />
         <TextareaPlayground />

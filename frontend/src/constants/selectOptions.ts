@@ -90,3 +90,37 @@ export const COUNTRY_OPTIONS: SelectOption[] = [
     value: "GB",
   },
 ];
+
+export const PRODUCT_RATING_OPTIONS = [
+  {
+    label: "All Ratings",
+    value: "",
+  },
+  {
+    label: "4★ & above",
+    value: "4",
+  },
+  {
+    label: "3★ & above",
+    value: "3",
+  },
+  {
+    label: "2★ & above",
+    value: "2",
+  },
+];
+
+export const PRODUCT_AVAILABILITY_OPTIONS = [
+  {
+    label: "All Availability",
+    value: "",
+  },
+  {
+    label: "In Stock",
+    value: "in-stock",
+  },
+  {
+    label: "Out of Stock",
+    value: "out-of-stock",
+  },
+];
