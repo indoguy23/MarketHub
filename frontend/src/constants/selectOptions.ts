@@ -105,7 +105,7 @@ export const PRODUCT_RATING_OPTIONS = [
     value: "3",
   },
   {
-    label: "2★ & above",
+    label: "2 & above",
     value: "2",
   },
 ];
@@ -122,5 +122,24 @@ export const PRODUCT_AVAILABILITY_OPTIONS = [
   {
     label: "Out of Stock",
     value: "out-of-stock",
+  },
+];
+
+export const PRODUCT_SORT_OPTIONS = [
+  {
+    label: "Featured",
+    value: "featured",
+  },
+  {
+    label: "Price: Low to High",
+    value: "price-low-high",
+  },
+  {
+    label: "Price: High to Low",
+    value: "price-high-low",
+  },
+  {
+    label: "Top Rated",
+    value: "rating",
   },
 ];

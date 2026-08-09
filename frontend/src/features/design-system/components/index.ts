@@ -25,3 +25,4 @@ export { default as PaginationPlayground } from "./PaginationPlayground";
 export { default as DataTablePlayground } from "./DataTablePlayground";
 export { default as ProductCardPlayground } from "./ProductCardPlayground";
 export { default as ProductFiltersPlayground } from "./ProductFiltersPlayground";
+export { default as ProductListingPlayground } from "./ProductListingPlayground";
