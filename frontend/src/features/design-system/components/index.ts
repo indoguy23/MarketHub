@@ -27,3 +27,4 @@ export { default as ProductCardPlayground } from "./ProductCardPlayground";
 export { default as ProductFiltersPlayground } from "./ProductFiltersPlayground";
 export { default as ProductListingPlayground } from "./ProductListingPlayground";
 export { default as NavbarPlayground } from "./NavbarPlayground";
+export { default as SidebarPlayground } from "./SidebarPlayground";

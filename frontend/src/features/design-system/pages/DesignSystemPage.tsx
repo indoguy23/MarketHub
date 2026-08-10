@@ -22,6 +22,7 @@ import {
   RadioGroupPlayground,
   SearchBarPlayground,
   SelectPlayground,
+  SidebarPlayground,
   SkeletonPlayground,
   SwitchPlayground,
   TabsPlayground,
@@ -55,6 +56,7 @@ const DesignSystemPage = () => {
         <ProductFiltersPlayground />
         <ProductListingPlayground />
         <NavbarPlayground />
+        <SidebarPlayground />
         <DataTablePlayground />
         <InputPlayground />
         <TextareaPlayground />
