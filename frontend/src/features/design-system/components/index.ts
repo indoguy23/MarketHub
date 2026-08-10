@@ -28,3 +28,4 @@ export { default as ProductFiltersPlayground } from "./ProductFiltersPlayground"
 export { default as ProductListingPlayground } from "./ProductListingPlayground";
 export { default as NavbarPlayground } from "./NavbarPlayground";
 export { default as SidebarPlayground } from "./SidebarPlayground";
+export { default as DashboardLayoutPlayground } from "./DashboardLayoutPlayground";
