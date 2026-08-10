@@ -25,6 +25,7 @@ import {
   SelectPlayground,
   SidebarPlayground,
   SkeletonPlayground,
+  StatCardPlayground,
   SwitchPlayground,
   TabsPlayground,
   TextareaPlayground,
@@ -59,6 +60,7 @@ const DesignSystemPage = () => {
         <NavbarPlayground />
         <SidebarPlayground />
         <DashboardLayoutPlayground />
+        <StatCardPlayground />
         <DataTablePlayground />
         <InputPlayground />
         <TextareaPlayground />
