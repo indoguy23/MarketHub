@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import PriceDisplay from "@/components/common/PriceDisplay";
 import { Heart, ImageOff, ShoppingCart, Star } from "lucide-react";
 
 import Badge from "@/components/ui/Badge";
@@ -9,12 +9,6 @@ import { cn } from "@/utils/cn";
 
 import { productCardStyles } from "./ProductCard.styles";
 import type { ProductCardProps } from "./ProductCard.types";
-
-const currencyFormatter = new Intl.NumberFormat("en-IN", {
-  style: "currency",
-  currency: "INR",
-  maximumFractionDigits: 0,
-});
 
 const calculateDiscount = (price: number, originalPrice?: number) => {
   if (!originalPrice || originalPrice <= price) {
@@ -140,17 +134,10 @@ const ProductCard = ({
           </div>
         )}
 
-        <div className={productCardStyles.priceRow}>
-          <span className={productCardStyles.price}>
-            {currencyFormatter.format(product.price)}
-          </span>
-
-          {product.originalPrice && product.originalPrice > product.price && (
-            <span className={productCardStyles.originalPrice}>
-              {currencyFormatter.format(product.originalPrice)}
-            </span>
-          )}
-        </div>
+        <PriceDisplay
+          price={product.price}
+          originalPrice={product.originalPrice}
+        />
 
         <div className="mt-3">
           {isOutOfStock ? (

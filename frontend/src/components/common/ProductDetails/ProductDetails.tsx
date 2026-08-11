@@ -1,4 +1,5 @@
 import { Heart, ShoppingCart, Star } from "lucide-react";
+import PriceDisplay from "@/components/common/PriceDisplay";
 import QuantitySelector from "@/components/common/QuantitySelector";
 import ProductImageGallery from "@/components/common/ProductImageGallery";
 import Badge from "@/components/ui/Badge";
@@ -8,20 +9,6 @@ import { cn } from "@/utils/cn";
 
 import { productDetailsStyles } from "./ProductDetails.styles";
 import type { ProductDetailsProps } from "./ProductDetails.types";
-
-const currencyFormatter = new Intl.NumberFormat("en-IN", {
-  style: "currency",
-  currency: "INR",
-  maximumFractionDigits: 0,
-});
-
-const calculateDiscount = (price: number, originalPrice?: number) => {
-  if (!originalPrice || originalPrice <= price) {
-    return null;
-  }
-
-  return Math.round(((originalPrice - price) / originalPrice) * 100);
-};
 
 const ProductDetails = ({
   product,
@@ -36,8 +23,6 @@ const ProductDetails = ({
   const isOutOfStock = product.stock <= 0;
 
   const maxQuantity = product.maxQuantity ?? product.stock;
-
-  const discount = calculateDiscount(product.price, product.originalPrice);
 
   if (loading) {
     return (
@@ -101,21 +86,11 @@ const ProductDetails = ({
           )}
         </div>
 
-        <div className={productDetailsStyles.priceRow}>
-          <span className={productDetailsStyles.price}>
-            {currencyFormatter.format(product.price)}
-          </span>
-
-          {product.originalPrice && product.originalPrice > product.price && (
-            <span className={productDetailsStyles.originalPrice}>
-              {currencyFormatter.format(product.originalPrice)}
-            </span>
-          )}
-
-          {discount !== null && (
-            <Badge variant="destructive">{discount}% Off</Badge>
-          )}
-        </div>
+        <PriceDisplay
+          price={product.price}
+          originalPrice={product.originalPrice}
+          size="lg"
+        />
 
         {product.description && (
           <p className={productDetailsStyles.description}>
