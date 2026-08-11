@@ -31,3 +31,4 @@ export { default as SidebarPlayground } from "./SidebarPlayground";
 export { default as DashboardLayoutPlayground } from "./DashboardLayoutPlayground";
 export { default as StatCardPlayground } from "./StatCardPlayground";
 export { default as FileUploadPlayground } from "./FileUploadPlayground";
+export { default as ProductImageGalleryPlayground } from "./ProductImageGalleryPlayground";
