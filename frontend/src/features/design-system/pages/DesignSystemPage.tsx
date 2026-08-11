@@ -19,6 +19,7 @@ import {
   NavbarPlayground,
   PaginationPlayground,
   ProductCardPlayground,
+  ProductDetailsPlayground,
   ProductFiltersPlayground,
   ProductImageGalleryPlayground,
   ProductListingPlayground,
@@ -65,6 +66,7 @@ const DesignSystemPage = () => {
         <StatCardPlayground />
         <FileUploadPlayground />
         <ProductImageGalleryPlayground />
+        <ProductDetailsPlayground />
         <DataTablePlayground />
         <InputPlayground />
         <TextareaPlayground />

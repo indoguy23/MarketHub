@@ -32,3 +32,4 @@ export { default as DashboardLayoutPlayground } from "./DashboardLayoutPlaygroun
 export { default as StatCardPlayground } from "./StatCardPlayground";
 export { default as FileUploadPlayground } from "./FileUploadPlayground";
 export { default as ProductImageGalleryPlayground } from "./ProductImageGalleryPlayground";
+export { default as ProductDetailsPlayground } from "./ProductDetailsPlayground";
