@@ -12,6 +12,7 @@ import {
   DialogPlayground,
   DividerPlayground,
   DropdownMenuPlayground,
+  FileUploadPlayground,
   FormPlayground,
   InputPlayground,
   LoaderPlayground,
@@ -61,6 +62,7 @@ const DesignSystemPage = () => {
         <SidebarPlayground />
         <DashboardLayoutPlayground />
         <StatCardPlayground />
+        <FileUploadPlayground />
         <DataTablePlayground />
         <InputPlayground />
         <TextareaPlayground />
