@@ -1,5 +1,5 @@
-import { Heart, Minus, Plus, ShoppingCart, Star } from "lucide-react";
-
+import { Heart, ShoppingCart, Star } from "lucide-react";
+import QuantitySelector from "@/components/common/QuantitySelector";
 import ProductImageGallery from "@/components/common/ProductImageGallery";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
@@ -38,22 +38,6 @@ const ProductDetails = ({
   const maxQuantity = product.maxQuantity ?? product.stock;
 
   const discount = calculateDiscount(product.price, product.originalPrice);
-
-  const decreaseQuantity = () => {
-    if (quantity <= 1) {
-      return;
-    }
-
-    onQuantityChange(quantity - 1);
-  };
-
-  const increaseQuantity = () => {
-    if (isOutOfStock || quantity >= maxQuantity) {
-      return;
-    }
-
-    onQuantityChange(quantity + 1);
-  };
 
   if (loading) {
     return (
@@ -144,34 +128,13 @@ const ProductDetails = ({
         <div className={productDetailsStyles.quantitySection}>
           <span className="text-sm font-medium text-foreground">Quantity</span>
 
-          <div className={productDetailsStyles.quantityControl}>
-            <Button
-              size="icon"
-              variant="ghost"
-              aria-label="Decrease quantity"
-              disabled={isOutOfStock || quantity <= 1}
-              onClick={decreaseQuantity}
-            >
-              <Minus aria-hidden="true" className="h-4 w-4" />
-            </Button>
-
-            <span
-              aria-live="polite"
-              className={productDetailsStyles.quantityValue}
-            >
-              {quantity}
-            </span>
-
-            <Button
-              size="icon"
-              variant="ghost"
-              aria-label="Increase quantity"
-              disabled={isOutOfStock || quantity >= maxQuantity}
-              onClick={increaseQuantity}
-            >
-              <Plus aria-hidden="true" className="h-4 w-4" />
-            </Button>
-          </div>
+          <QuantitySelector
+            value={quantity}
+            onChange={onQuantityChange}
+            min={1}
+            max={maxQuantity}
+            disabled={isOutOfStock}
+          />
 
           {!isOutOfStock && (
             <span className="text-sm text-muted-foreground">

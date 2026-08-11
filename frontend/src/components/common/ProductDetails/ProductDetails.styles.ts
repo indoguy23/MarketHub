@@ -30,17 +30,5 @@ export const productDetailsStyles = {
     " ",
   ),
 
-  quantityControl: [
-    "inline-flex items-center",
-    "rounded-xl border border-border",
-    "bg-background",
-  ].join(" "),
-
-  quantityValue: [
-    "flex h-10 min-w-12 items-center justify-center",
-    "border-x border-border",
-    "text-sm font-medium text-foreground",
-  ].join(" "),
-
   actions: ["mt-6 flex flex-col gap-3", "sm:flex-row"].join(" "),
 };

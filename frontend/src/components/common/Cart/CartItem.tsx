@@ -1,5 +1,5 @@
-import { Minus, Plus, Trash2 } from "lucide-react";
-
+import { Trash2 } from "lucide-react";
+import QuantitySelector from "@/components/common/QuantitySelector";
 import Button from "@/components/ui/Button";
 import { cn } from "@/utils/cn";
 
@@ -18,22 +18,6 @@ const CartItem = ({
   onRemove,
   className,
 }: CartItemProps) => {
-  const decreaseQuantity = () => {
-    if (item.quantity <= 1) {
-      return;
-    }
-
-    onQuantityChange?.(item, item.quantity - 1);
-  };
-
-  const increaseQuantity = () => {
-    if (item.quantity >= item.stock) {
-      return;
-    }
-
-    onQuantityChange?.(item, item.quantity + 1);
-  };
-
   return (
     <article className={cn(cartStyles.item, className)}>
       <img src={item.image} alt={item.name} className={cartStyles.image} />
@@ -54,31 +38,15 @@ const CartItem = ({
         </div>
 
         <div className={cartStyles.itemActions}>
-          <div className={cartStyles.quantity}>
-            <Button
-              size="icon"
-              variant="ghost"
-              aria-label={`Decrease quantity of ${item.name}`}
-              disabled={item.quantity <= 1}
-              onClick={decreaseQuantity}
-            >
-              <Minus className="h-4 w-4" />
-            </Button>
-
-            <span aria-live="polite" className={cartStyles.quantityValue}>
-              {item.quantity}
-            </span>
-
-            <Button
-              size="icon"
-              variant="ghost"
-              aria-label={`Increase quantity of ${item.name}`}
-              disabled={item.quantity >= item.stock}
-              onClick={increaseQuantity}
-            >
-              <Plus className="h-4 w-4" />
-            </Button>
-          </div>
+          <QuantitySelector
+            value={item.quantity}
+            min={1}
+            max={item.stock}
+            size="sm"
+            decrementLabel={`Decrease quantity of ${item.name}`}
+            incrementLabel={`Increase quantity of ${item.name}`}
+            onChange={(quantity) => onQuantityChange?.(item, quantity)}
+          />
 
           <Button
             size="sm"

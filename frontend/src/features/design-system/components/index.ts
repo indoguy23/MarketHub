@@ -34,3 +34,4 @@ export { default as FileUploadPlayground } from "./FileUploadPlayground";
 export { default as ProductImageGalleryPlayground } from "./ProductImageGalleryPlayground";
 export { default as ProductDetailsPlayground } from "./ProductDetailsPlayground";
 export { default as CartPlayground } from "./CartPlayground";
+export { default as QuantitySelectorPlayground } from "./QuantitySelectorPlayground";

@@ -24,6 +24,7 @@ import {
   ProductFiltersPlayground,
   ProductImageGalleryPlayground,
   ProductListingPlayground,
+  QuantitySelectorPlayground,
   RadioGroupPlayground,
   SearchBarPlayground,
   SelectPlayground,
@@ -68,6 +69,7 @@ const DesignSystemPage = () => {
         <FileUploadPlayground />
         <ProductImageGalleryPlayground />
         <ProductDetailsPlayground />
+        <QuantitySelectorPlayground />
         <CartPlayground />
         <DataTablePlayground />
         <InputPlayground />

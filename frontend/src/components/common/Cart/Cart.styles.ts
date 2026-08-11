@@ -22,18 +22,6 @@ export const cartStyles = {
 
   itemActions: ["mt-4 flex flex-wrap items-center gap-3"].join(" "),
 
-  quantity: [
-    "inline-flex items-center",
-    "rounded-xl border border-border",
-    "bg-background",
-  ].join(" "),
-
-  quantityValue: [
-    "flex h-9 min-w-11 items-center justify-center",
-    "border-x border-border",
-    "text-sm font-medium text-foreground",
-  ].join(" "),
-
   summary: ["rounded-2xl border border-border", "bg-card p-5"].join(" "),
 
   summaryTitle: ["text-lg font-semibold", "text-card-foreground"].join(" "),
