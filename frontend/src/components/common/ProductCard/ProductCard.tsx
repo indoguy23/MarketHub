@@ -6,7 +6,7 @@ import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Skeleton from "@/components/ui/Skeleton";
 import { cn } from "@/utils/cn";
-
+import StockBadge from "@/components/common/StockBadge";
 import { productCardStyles } from "./ProductCard.styles";
 import type { ProductCardProps } from "./ProductCard.types";
 
@@ -140,13 +140,7 @@ const ProductCard = ({
         />
 
         <div className="mt-3">
-          {isOutOfStock ? (
-            <Badge variant="destructive">Out of Stock</Badge>
-          ) : product.stock <= 5 ? (
-            <Badge variant="warning">Only {product.stock} left</Badge>
-          ) : (
-            <Badge variant="success">In Stock</Badge>
-          )}
+          <StockBadge stock={product.stock} showQuantity={false} />
         </div>
 
         <div className={productCardStyles.footer}>

@@ -2,11 +2,10 @@ import { Heart, ShoppingCart, Star } from "lucide-react";
 import PriceDisplay from "@/components/common/PriceDisplay";
 import QuantitySelector from "@/components/common/QuantitySelector";
 import ProductImageGallery from "@/components/common/ProductImageGallery";
-import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Skeleton from "@/components/ui/Skeleton";
 import { cn } from "@/utils/cn";
-
+import StockBadge from "@/components/common/StockBadge";
 import { productDetailsStyles } from "./ProductDetails.styles";
 import type { ProductDetailsProps } from "./ProductDetails.types";
 
@@ -77,13 +76,7 @@ const ProductDetails = ({
             </span>
           )}
 
-          {isOutOfStock ? (
-            <Badge variant="destructive">Out of Stock</Badge>
-          ) : product.stock <= 5 ? (
-            <Badge variant="warning">Only {product.stock} left</Badge>
-          ) : (
-            <Badge variant="success">In Stock</Badge>
-          )}
+          <StockBadge stock={product.stock} showQuantity={false} />
         </div>
 
         <PriceDisplay
