@@ -5,6 +5,7 @@ import {
   BreadcrumbPlayground,
   ButtonPlayground,
   CardPlayground,
+  CartPlayground,
   CheckboxPlayground,
   DashboardLayoutPlayground,
   DataTablePlayground,
@@ -67,6 +68,7 @@ const DesignSystemPage = () => {
         <FileUploadPlayground />
         <ProductImageGalleryPlayground />
         <ProductDetailsPlayground />
+        <CartPlayground />
         <DataTablePlayground />
         <InputPlayground />
         <TextareaPlayground />
