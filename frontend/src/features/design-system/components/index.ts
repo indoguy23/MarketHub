@@ -38,3 +38,4 @@ export { default as QuantitySelectorPlayground } from "./QuantitySelectorPlaygro
 export { default as StockBadgePlayground } from "./StockBadgePlayground";
 export { default as RatingDisplayPlayground } from "./RatingDisplayPlayground";
 export { default as ConfirmDialogPlayground } from "./ConfirmDialogPlayground";
+export { default as ReviewPlayground } from "./ReviewPlayground";
