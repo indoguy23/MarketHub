@@ -1,4 +1,4 @@
-import { Heart, ShoppingCart, Star } from "lucide-react";
+import { Heart, ShoppingCart } from "lucide-react";
 import PriceDisplay from "@/components/common/PriceDisplay";
 import QuantitySelector from "@/components/common/QuantitySelector";
 import ProductImageGallery from "@/components/common/ProductImageGallery";
@@ -8,6 +8,7 @@ import { cn } from "@/utils/cn";
 import StockBadge from "@/components/common/StockBadge";
 import { productDetailsStyles } from "./ProductDetails.styles";
 import type { ProductDetailsProps } from "./ProductDetails.types";
+import RatingDisplay from "@/components/common/RatingDisplay";
 
 const ProductDetails = ({
   product,
@@ -58,16 +59,10 @@ const ProductDetails = ({
 
         <div className={productDetailsStyles.ratingRow}>
           {typeof product.rating === "number" && (
-            <div className="flex items-center gap-1">
-              <Star
-                aria-hidden="true"
-                className="h-4 w-4 fill-current text-warning"
-              />
-
-              <span className="font-medium text-foreground">
-                {product.rating.toFixed(1)}
-              </span>
-            </div>
+            <RatingDisplay
+              rating={product.rating}
+              reviewCount={product.reviewCount}
+            />
           )}
 
           {typeof product.reviewCount === "number" && (

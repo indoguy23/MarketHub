@@ -36,3 +36,4 @@ export { default as ProductDetailsPlayground } from "./ProductDetailsPlayground"
 export { default as CartPlayground } from "./CartPlayground";
 export { default as QuantitySelectorPlayground } from "./QuantitySelectorPlayground";
 export { default as StockBadgePlayground } from "./StockBadgePlayground";
+export { default as RatingDisplayPlayground } from "./RatingDisplayPlayground";

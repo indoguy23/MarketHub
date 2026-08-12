@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PriceDisplay from "@/components/common/PriceDisplay";
-import { Heart, ImageOff, ShoppingCart, Star } from "lucide-react";
-
+import { Heart, ImageOff, ShoppingCart } from "lucide-react";
+import RatingDisplay from "@/components/common/RatingDisplay";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Skeleton from "@/components/ui/Skeleton";
@@ -117,21 +117,11 @@ const ProductCard = ({
         </button>
 
         {typeof product.rating === "number" && (
-          <div className={productCardStyles.ratingRow}>
-            <div className="flex items-center gap-1">
-              <Star className="h-4 w-4 fill-current text-warning" />
-
-              <span className="font-medium text-foreground">
-                {product.rating.toFixed(1)}
-              </span>
-            </div>
-
-            {typeof product.reviewCount === "number" && (
-              <span className="text-muted-foreground">
-                ({product.reviewCount})
-              </span>
-            )}
-          </div>
+          <RatingDisplay
+            rating={product.rating}
+            reviewCount={product.reviewCount}
+            size="sm"
+          />
         )}
 
         <PriceDisplay
