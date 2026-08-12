@@ -7,6 +7,7 @@ import {
   CardPlayground,
   CartPlayground,
   CheckboxPlayground,
+  ConfirmDialogPlayground,
   DashboardLayoutPlayground,
   DataTablePlayground,
   DesignSystemHeader,
@@ -60,6 +61,7 @@ const DesignSystemPage = () => {
         <BreadcrumbPlayground />
         <TabsPlayground />
         <DialogPlayground />
+        <ConfirmDialogPlayground />
         <TooltipPlayground />
         <DropdownMenuPlayground />
 
