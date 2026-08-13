@@ -41,3 +41,4 @@ export { default as ConfirmDialogPlayground } from "./ConfirmDialogPlayground";
 export { default as ReviewPlayground } from "./ReviewPlayground";
 export { default as AddressPlayground } from "./AddressPlayground";
 export { default as OrderSummaryPlayground } from "./OrderSummaryPlayground";
+export { default as CouponInputPlayground } from "./CouponInputPlayground";

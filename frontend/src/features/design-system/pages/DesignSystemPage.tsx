@@ -9,6 +9,7 @@ import {
   CartPlayground,
   CheckboxPlayground,
   ConfirmDialogPlayground,
+  CouponInputPlayground,
   DashboardLayoutPlayground,
   DataTablePlayground,
   DesignSystemHeader,
@@ -101,6 +102,7 @@ const DesignSystemPage = () => {
         <AddressPlayground />
         <CartPlayground />
         <OrderSummaryPlayground />
+        <CouponInputPlayground />
 
         {/* Application Navigation */}
         <NavbarPlayground />
