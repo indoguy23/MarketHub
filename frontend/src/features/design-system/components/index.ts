@@ -45,3 +45,4 @@ export { default as CouponInputPlayground } from "./CouponInputPlayground";
 export { default as OrderStatusTimelinePlayground } from "./OrderStatusTimelinePlayground";
 export { default as OrderCardPlayground } from "./OrderCardPlayground";
 export { default as SellerCardPlayground } from "./SellerCardPlayground";
+export { default as CategoryCardPlayground } from "./CategoryCardPlayground";

@@ -7,6 +7,7 @@ import {
   ButtonPlayground,
   CardPlayground,
   CartPlayground,
+  CategoryCardPlayground,
   CheckboxPlayground,
   ConfirmDialogPlayground,
   CouponInputPlayground,
@@ -92,6 +93,7 @@ const DesignSystemPage = () => {
 
         {/* Marketplace Components */}
         <ProductCardPlayground />
+        <CategoryCardPlayground />
         <SellerCardPlayground />
         <ProductFiltersPlayground />
         <ProductListingPlayground />
