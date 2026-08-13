@@ -21,6 +21,7 @@ import {
   InputPlayground,
   LoaderPlayground,
   NavbarPlayground,
+  OrderCardPlayground,
   OrderStatusTimelinePlayground,
   OrderSummaryPlayground,
   PaginationPlayground,
@@ -105,6 +106,7 @@ const DesignSystemPage = () => {
         <OrderSummaryPlayground />
         <CouponInputPlayground />
         <OrderStatusTimelinePlayground />
+        <OrderCardPlayground />
 
         {/* Application Navigation */}
         <NavbarPlayground />

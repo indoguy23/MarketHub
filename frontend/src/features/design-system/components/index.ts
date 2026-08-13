@@ -43,3 +43,4 @@ export { default as AddressPlayground } from "./AddressPlayground";
 export { default as OrderSummaryPlayground } from "./OrderSummaryPlayground";
 export { default as CouponInputPlayground } from "./CouponInputPlayground";
 export { default as OrderStatusTimelinePlayground } from "./OrderStatusTimelinePlayground";
+export { default as OrderCardPlayground } from "./OrderCardPlayground";
