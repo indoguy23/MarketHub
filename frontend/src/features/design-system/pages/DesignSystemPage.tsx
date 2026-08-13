@@ -1,4 +1,5 @@
 import {
+  AddressPlayground,
   AlertPlayground,
   AvatarPlayground,
   BadgePlayground,
@@ -96,6 +97,7 @@ const DesignSystemPage = () => {
         <ProductDetailsPlayground />
 
         <QuantitySelectorPlayground />
+        <AddressPlayground />
         <CartPlayground />
 
         {/* Application Navigation */}
