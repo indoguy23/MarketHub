@@ -20,6 +20,7 @@ import {
   InputPlayground,
   LoaderPlayground,
   NavbarPlayground,
+  OrderSummaryPlayground,
   PaginationPlayground,
   ProductCardPlayground,
   ProductDetailsPlayground,
@@ -99,6 +100,7 @@ const DesignSystemPage = () => {
         <QuantitySelectorPlayground />
         <AddressPlayground />
         <CartPlayground />
+        <OrderSummaryPlayground />
 
         {/* Application Navigation */}
         <NavbarPlayground />
