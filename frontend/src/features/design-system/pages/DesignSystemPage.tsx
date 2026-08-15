@@ -20,6 +20,7 @@ import {
   DropdownMenuPlayground,
   FileUploadPlayground,
   FormPlayground,
+  HeroBannerPlayground,
   InputPlayground,
   LoaderPlayground,
   NavbarPlayground,
@@ -95,6 +96,7 @@ const DesignSystemPage = () => {
 
         {/* Marketplace Components */}
         <SectionHeaderPlayground />
+        <HeroBannerPlayground />
         <ContentRailPlayground />
         <ProductCardPlayground />
         <CategoryCardPlayground />
