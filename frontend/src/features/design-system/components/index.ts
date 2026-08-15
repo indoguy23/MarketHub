@@ -47,3 +47,4 @@ export { default as OrderCardPlayground } from "./OrderCardPlayground";
 export { default as SellerCardPlayground } from "./SellerCardPlayground";
 export { default as CategoryCardPlayground } from "./CategoryCardPlayground";
 export { default as SectionHeaderPlayground } from "./SectionHeaderPlayground";
+export { default as ContentRailPlayground } from "./ContentRailPlayground";

@@ -10,6 +10,7 @@ import {
   CategoryCardPlayground,
   CheckboxPlayground,
   ConfirmDialogPlayground,
+  ContentRailPlayground,
   CouponInputPlayground,
   DashboardLayoutPlayground,
   DataTablePlayground,
@@ -94,6 +95,7 @@ const DesignSystemPage = () => {
 
         {/* Marketplace Components */}
         <SectionHeaderPlayground />
+        <ContentRailPlayground />
         <ProductCardPlayground />
         <CategoryCardPlayground />
         <SellerCardPlayground />
