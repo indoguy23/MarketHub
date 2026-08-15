@@ -33,6 +33,7 @@ import {
   ProductFiltersPlayground,
   ProductImageGalleryPlayground,
   ProductListingPlayground,
+  PromoCardPlayground,
   QuantitySelectorPlayground,
   RadioGroupPlayground,
   RatingDisplayPlayground,
@@ -97,6 +98,7 @@ const DesignSystemPage = () => {
         {/* Marketplace Components */}
         <SectionHeaderPlayground />
         <HeroBannerPlayground />
+        <PromoCardPlayground />
         <ContentRailPlayground />
         <ProductCardPlayground />
         <CategoryCardPlayground />

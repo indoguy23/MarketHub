@@ -49,3 +49,4 @@ export { default as CategoryCardPlayground } from "./CategoryCardPlayground";
 export { default as SectionHeaderPlayground } from "./SectionHeaderPlayground";
 export { default as ContentRailPlayground } from "./ContentRailPlayground";
 export { default as HeroBannerPlayground } from "./HeroBannerPlayground";
+export { default as PromoCardPlayground } from "./PromoCardPlayground";
