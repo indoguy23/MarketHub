@@ -36,6 +36,7 @@ import {
   RatingDisplayPlayground,
   ReviewPlayground,
   SearchBarPlayground,
+  SectionHeaderPlayground,
   SelectPlayground,
   SellerCardPlayground,
   SidebarPlayground,
@@ -92,6 +93,7 @@ const DesignSystemPage = () => {
         <DataTablePlayground />
 
         {/* Marketplace Components */}
+        <SectionHeaderPlayground />
         <ProductCardPlayground />
         <CategoryCardPlayground />
         <SellerCardPlayground />
