@@ -51,3 +51,4 @@ export { default as ContentRailPlayground } from "./ContentRailPlayground";
 export { default as HeroBannerPlayground } from "./HeroBannerPlayground";
 export { default as PromoCardPlayground } from "./PromoCardPlayground";
 export { default as WishlistItemPlayground } from "./WishlistItemPlayground";
+export { default as OrderItemPlayground } from "./OrderItemPlayground";
