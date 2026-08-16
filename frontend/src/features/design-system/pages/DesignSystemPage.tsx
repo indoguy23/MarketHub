@@ -50,6 +50,7 @@ import {
   TabsPlayground,
   TextareaPlayground,
   TooltipPlayground,
+  WishlistItemPlayground,
 } from "../components";
 
 import EmptyStatePlayground from "../components/EmptyStatePlayground";
@@ -101,6 +102,7 @@ const DesignSystemPage = () => {
         <PromoCardPlayground />
         <ContentRailPlayground />
         <ProductCardPlayground />
+        <WishlistItemPlayground />
         <CategoryCardPlayground />
         <SellerCardPlayground />
         <ProductFiltersPlayground />

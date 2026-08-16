@@ -50,3 +50,4 @@ export { default as SectionHeaderPlayground } from "./SectionHeaderPlayground";
 export { default as ContentRailPlayground } from "./ContentRailPlayground";
 export { default as HeroBannerPlayground } from "./HeroBannerPlayground";
 export { default as PromoCardPlayground } from "./PromoCardPlayground";
+export { default as WishlistItemPlayground } from "./WishlistItemPlayground";
