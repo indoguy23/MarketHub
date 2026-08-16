@@ -39,6 +39,7 @@ import {
   RadioGroupPlayground,
   RatingDisplayPlayground,
   RatingInputPlayground,
+  ReviewFormPlayground,
   ReviewPlayground,
   SearchBarPlayground,
   SectionHeaderPlayground,
@@ -113,6 +114,7 @@ const DesignSystemPage = () => {
         <ProductImageGalleryPlayground />
         <RatingDisplayPlayground />
         <RatingInputPlayground />
+        <ReviewFormPlayground />
         <ReviewPlayground />
         <StockBadgePlayground />
         <ProductDetailsPlayground />
