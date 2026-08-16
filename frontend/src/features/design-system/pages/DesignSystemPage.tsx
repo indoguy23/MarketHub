@@ -29,6 +29,7 @@ import {
   OrderStatusTimelinePlayground,
   OrderSummaryPlayground,
   PaginationPlayground,
+  PaymentMethodCardPlayground,
   ProductCardPlayground,
   ProductDetailsPlayground,
   ProductFiltersPlayground,
@@ -124,6 +125,7 @@ const DesignSystemPage = () => {
         <CartPlayground />
         <OrderSummaryPlayground />
         <CouponInputPlayground />
+        <PaymentMethodCardPlayground />
         <OrderItemPlayground />
         <OrderStatusTimelinePlayground />
         <OrderCardPlayground />
