@@ -52,3 +52,4 @@ export { default as HeroBannerPlayground } from "./HeroBannerPlayground";
 export { default as PromoCardPlayground } from "./PromoCardPlayground";
 export { default as WishlistItemPlayground } from "./WishlistItemPlayground";
 export { default as OrderItemPlayground } from "./OrderItemPlayground";
+export { default as RatingInputPlayground } from "./RatingInputPlayground";

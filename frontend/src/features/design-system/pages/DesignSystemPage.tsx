@@ -38,6 +38,7 @@ import {
   QuantitySelectorPlayground,
   RadioGroupPlayground,
   RatingDisplayPlayground,
+  RatingInputPlayground,
   ReviewPlayground,
   SearchBarPlayground,
   SectionHeaderPlayground,
@@ -111,6 +112,7 @@ const DesignSystemPage = () => {
         <FileUploadPlayground />
         <ProductImageGalleryPlayground />
         <RatingDisplayPlayground />
+        <RatingInputPlayground />
         <ReviewPlayground />
         <StockBadgePlayground />
         <ProductDetailsPlayground />
