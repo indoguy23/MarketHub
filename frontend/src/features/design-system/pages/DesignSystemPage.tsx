@@ -49,6 +49,7 @@ import {
   SidebarPlayground,
   SkeletonPlayground,
   StatCardPlayground,
+  StepIndicatorPlayground,
   StockBadgePlayground,
   SwitchPlayground,
   TabsPlayground,
@@ -126,6 +127,7 @@ const DesignSystemPage = () => {
         <OrderSummaryPlayground />
         <CouponInputPlayground />
         <PaymentMethodCardPlayground />
+        <StepIndicatorPlayground />
         <OrderItemPlayground />
         <OrderStatusTimelinePlayground />
         <OrderCardPlayground />
