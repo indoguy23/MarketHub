@@ -21,6 +21,7 @@ import {
   FileUploadPlayground,
   FormPlayground,
   HeroBannerPlayground,
+  InfoListPlayground,
   InputPlayground,
   LoaderPlayground,
   NavbarPlayground,
@@ -103,6 +104,7 @@ const DesignSystemPage = () => {
 
         {/* Marketplace Components */}
         <SectionHeaderPlayground />
+        <InfoListPlayground />
         <HeroBannerPlayground />
         <PromoCardPlayground />
         <ContentRailPlayground />
