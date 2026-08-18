@@ -60,3 +60,5 @@ export { default as InfoListPlayground } from "./InfoListPlayground";
 export { default as StatusBadgePlayground } from "./StatusBadgePlayground";
 export { default as ProgressStatusPlayground } from "./ProgressStatusPlayground";
 export { default as TimelinePlayground } from "./TimelinePlayground";
+
+export { default as MetricPlayground } from "./MetricPlayground";

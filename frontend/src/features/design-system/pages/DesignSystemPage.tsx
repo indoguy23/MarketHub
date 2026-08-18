@@ -24,6 +24,7 @@ import {
   InfoListPlayground,
   InputPlayground,
   LoaderPlayground,
+  MetricPlayground,
   NavbarPlayground,
   OrderCardPlayground,
   OrderItemPlayground,
@@ -110,6 +111,7 @@ const DesignSystemPage = () => {
         {/* Marketplace Components */}
         <SectionHeaderPlayground />
         <InfoListPlayground />
+        <MetricPlayground />
         <HeroBannerPlayground />
         <PromoCardPlayground />
         <ContentRailPlayground />
