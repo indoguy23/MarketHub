@@ -62,3 +62,4 @@ export { default as ProgressStatusPlayground } from "./ProgressStatusPlayground"
 export { default as TimelinePlayground } from "./TimelinePlayground";
 
 export { default as MetricPlayground } from "./MetricPlayground";
+export { default as ActionMenuPlayground } from "./ActionMenuPlayground";

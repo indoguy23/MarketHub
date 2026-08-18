@@ -1,4 +1,5 @@
 import {
+  ActionMenuPlayground,
   AddressPlayground,
   AlertPlayground,
   AvatarPlayground,
@@ -89,6 +90,7 @@ const DesignSystemPage = () => {
         <ConfirmDialogPlayground />
         <TooltipPlayground />
         <DropdownMenuPlayground />
+        <ActionMenuPlayground />
 
         {/* Feedback & States */}
         <LoaderPlayground />
