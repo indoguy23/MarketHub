@@ -10,6 +10,7 @@ import {
   CartPlayground,
   CategoryCardPlayground,
   CheckboxPlayground,
+  ConfirmationDialogPlayground,
   ConfirmDialogPlayground,
   ContentRailPlayground,
   CouponInputPlayground,
@@ -87,6 +88,7 @@ const DesignSystemPage = () => {
         <BreadcrumbPlayground />
         <TabsPlayground />
         <DialogPlayground />
+        <ConfirmationDialogPlayground />
         <ConfirmDialogPlayground />
         <TooltipPlayground />
         <DropdownMenuPlayground />
