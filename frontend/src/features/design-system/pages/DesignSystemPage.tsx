@@ -36,6 +36,7 @@ import {
   ProductFiltersPlayground,
   ProductImageGalleryPlayground,
   ProductListingPlayground,
+  ProgressStatusPlayground,
   PromoCardPlayground,
   QuantitySelectorPlayground,
   RadioGroupPlayground,
@@ -73,6 +74,7 @@ const DesignSystemPage = () => {
         <CardPlayground />
         <BadgePlayground />
         <StatusBadgePlayground />
+        <ProgressStatusPlayground />
         <AlertPlayground />
         <EmptyStatePlayground />
         <AvatarPlayground />
