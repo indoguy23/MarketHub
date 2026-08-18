@@ -29,6 +29,7 @@ import {
   MetricPlayground,
   NavbarPlayground,
   NotificationItemPlayground,
+  NotificationPanelPlayground,
   OrderCardPlayground,
   OrderItemPlayground,
   OrderStatusTimelinePlayground,
@@ -82,6 +83,7 @@ const DesignSystemPage = () => {
         <ProgressStatusPlayground />
         <AlertPlayground />
         <NotificationItemPlayground />
+        <NotificationPanelPlayground />
         <EmptyStatePlayground />
         <AvatarPlayground />
         <DividerPlayground />
