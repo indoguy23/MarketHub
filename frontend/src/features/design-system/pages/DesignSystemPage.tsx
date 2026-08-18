@@ -57,6 +57,7 @@ import {
   SwitchPlayground,
   TabsPlayground,
   TextareaPlayground,
+  TimelinePlayground,
   TooltipPlayground,
   WishlistItemPlayground,
 } from "../components";
@@ -134,6 +135,7 @@ const DesignSystemPage = () => {
         <CouponInputPlayground />
         <PaymentMethodCardPlayground />
         <StepIndicatorPlayground />
+        <TimelinePlayground />
         <OrderItemPlayground />
         <OrderStatusTimelinePlayground />
         <OrderCardPlayground />
