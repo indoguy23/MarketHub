@@ -57,3 +57,4 @@ export { default as ReviewFormPlayground } from "./ReviewFormPlayground";
 export { default as PaymentMethodCardPlayground } from "./PaymentMethodCardPlayground";
 export { default as StepIndicatorPlayground } from "./StepIndicatorPlayground";
 export { default as InfoListPlayground } from "./InfoListPlayground";
+export { default as StatusBadgePlayground } from "./StatusBadgePlayground";

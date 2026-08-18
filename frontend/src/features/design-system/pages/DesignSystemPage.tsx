@@ -50,6 +50,7 @@ import {
   SidebarPlayground,
   SkeletonPlayground,
   StatCardPlayground,
+  StatusBadgePlayground,
   StepIndicatorPlayground,
   StockBadgePlayground,
   SwitchPlayground,
@@ -71,6 +72,7 @@ const DesignSystemPage = () => {
         <ButtonPlayground />
         <CardPlayground />
         <BadgePlayground />
+        <StatusBadgePlayground />
         <AlertPlayground />
         <EmptyStatePlayground />
         <AvatarPlayground />
