@@ -69,3 +69,4 @@ export { default as NotificationPanelPlayground } from "./NotificationPanelPlayg
 export { default as FilterEmptyStatePlayground } from "./FilterEmptyStatePlayground";
 export { default as SortControlPlayground } from "./SortControlPlayground";
 export { default as ActiveFiltersPlayground } from "./ActiveFiltersPlayground";
+export { default as PageHeaderPlayground } from "./PageHeaderPlayground";

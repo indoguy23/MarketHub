@@ -36,6 +36,7 @@ import {
   OrderItemPlayground,
   OrderStatusTimelinePlayground,
   OrderSummaryPlayground,
+  PageHeaderPlayground,
   PaginationPlayground,
   PaymentMethodCardPlayground,
   ProductCardPlayground,
@@ -121,6 +122,7 @@ const DesignSystemPage = () => {
         <DataTablePlayground />
 
         {/* Marketplace Components */}
+        <PageHeaderPlayground />
         <SectionHeaderPlayground />
         <InfoListPlayground />
         <MetricPlayground />
