@@ -1,5 +1,6 @@
 import {
   ActionMenuPlayground,
+  ActiveFiltersPlayground,
   AddressPlayground,
   AlertPlayground,
   AvatarPlayground,
@@ -131,6 +132,7 @@ const DesignSystemPage = () => {
         <CategoryCardPlayground />
         <SellerCardPlayground />
         <ProductFiltersPlayground />
+        <ActiveFiltersPlayground />
         <SortControlPlayground />
         <ProductListingPlayground />
         <FileUploadPlayground />
