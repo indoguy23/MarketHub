@@ -68,6 +68,7 @@ import {
   TextareaPlayground,
   TimelinePlayground,
   TooltipPlayground,
+  UserSummaryPlayground,
   WishlistItemPlayground,
 } from "../components";
 
@@ -91,6 +92,7 @@ const DesignSystemPage = () => {
         <EmptyStatePlayground />
         <FilterEmptyStatePlayground />
         <AvatarPlayground />
+        <UserSummaryPlayground />
         <DividerPlayground />
 
         {/* Navigation & Overlay */}

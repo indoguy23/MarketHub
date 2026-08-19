@@ -70,3 +70,4 @@ export { default as FilterEmptyStatePlayground } from "./FilterEmptyStatePlaygro
 export { default as SortControlPlayground } from "./SortControlPlayground";
 export { default as ActiveFiltersPlayground } from "./ActiveFiltersPlayground";
 export { default as PageHeaderPlayground } from "./PageHeaderPlayground";
+export { default as UserSummaryPlayground } from "./UserSummaryPlayground";
