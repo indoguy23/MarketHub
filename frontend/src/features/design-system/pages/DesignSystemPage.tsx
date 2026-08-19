@@ -16,6 +16,7 @@ import {
   ContentRailPlayground,
   CouponInputPlayground,
   DashboardLayoutPlayground,
+  DataListPlayground,
   DataTablePlayground,
   DesignSystemHeader,
   DialogPlayground,
@@ -127,6 +128,7 @@ const DesignSystemPage = () => {
         <PageHeaderPlayground />
         <SectionHeaderPlayground />
         <InfoListPlayground />
+        <DataListPlayground />
         <MetricPlayground />
         <HeroBannerPlayground />
         <PromoCardPlayground />
