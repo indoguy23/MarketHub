@@ -21,6 +21,7 @@ import {
   DividerPlayground,
   DropdownMenuPlayground,
   FileUploadPlayground,
+  FilterEmptyStatePlayground,
   FormPlayground,
   HeroBannerPlayground,
   InfoListPlayground,
@@ -85,6 +86,7 @@ const DesignSystemPage = () => {
         <NotificationItemPlayground />
         <NotificationPanelPlayground />
         <EmptyStatePlayground />
+        <FilterEmptyStatePlayground />
         <AvatarPlayground />
         <DividerPlayground />
 

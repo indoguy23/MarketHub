@@ -66,3 +66,4 @@ export { default as ActionMenuPlayground } from "./ActionMenuPlayground";
 export { default as ConfirmationDialogPlayground } from "./ConfirmationDialogPlayground";
 export { default as NotificationItemPlayground } from "./NotificationItemPlayground";
 export { default as NotificationPanelPlayground } from "./NotificationPanelPlayground";
+export { default as FilterEmptyStatePlayground } from "./FilterEmptyStatePlayground";
