@@ -56,6 +56,7 @@ import {
   SellerCardPlayground,
   SidebarPlayground,
   SkeletonPlayground,
+  SortControlPlayground,
   StatCardPlayground,
   StatusBadgePlayground,
   StepIndicatorPlayground,
@@ -130,6 +131,7 @@ const DesignSystemPage = () => {
         <CategoryCardPlayground />
         <SellerCardPlayground />
         <ProductFiltersPlayground />
+        <SortControlPlayground />
         <ProductListingPlayground />
         <FileUploadPlayground />
         <ProductImageGalleryPlayground />
